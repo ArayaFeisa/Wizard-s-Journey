@@ -11,10 +11,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D body;
     private BoxCollider2D boxCollider;
     private float wallJumpCd;
+    private bool doubleJumpUnlocked;
+    private bool doubleJumpCD;
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
         boxCollider = GetComponent<BoxCollider2D>();
+        doubleJumpUnlocked = true;
     }
 
     private void Update() {
@@ -33,11 +36,19 @@ public class PlayerMovement : MonoBehaviour
             if (Input.GetKey(KeyCode.Space) && isGrounded()){
                 Jump();
             }
+            if (Input.GetKeyDown(KeyCode.Space) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
+            {
+                Jump();
+                doubleJumpCD = false;
+            }
+            if (isGrounded())
+            {
+                doubleJumpCD = true;
+            }
             if (onWall() && !isGrounded()){
-                body.gravityScale++;
-                body.velocity = Vector2.zero;
+                body.velocity = new Vector2(0, body.velocity.y);
             } else {
-                body.gravityScale = 25/10;
+                body.gravityScale = 2;
             }
             
         } else {
