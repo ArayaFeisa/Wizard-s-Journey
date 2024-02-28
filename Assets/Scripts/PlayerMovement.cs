@@ -21,10 +21,10 @@ public class PlayerMovement : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         if (horizontalInput > 0.01f){
-            transform.localScale = Vector3.one;
+            transform.localScale = Vector3.one*5f;
         }
         else if (horizontalInput < -0.01f) {
-            transform.localScale = new Vector3(-1, 1, 1);
+            transform.localScale = new Vector3(-5, 5, 5);
         }
 
         if (wallJumpCd < 0.7f){
