@@ -9,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
     // public bool midAir;
     // public groundCheckTest check;
     private Rigidbody2D body;
+    private Animator anim;
     private BoxCollider2D boxCollider;
     private float wallJumpCd;
     private bool doubleJumpUnlocked;
@@ -16,7 +17,9 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
+
         doubleJumpUnlocked = true;
     }
 
@@ -29,6 +32,9 @@ public class PlayerMovement : MonoBehaviour
         else if (horizontalInput < -0.01f) {
             transform.localScale = new Vector3(-5, 5, 5);
         }
+
+        anim.SetBool("walk", horizontalInput != 0);
+        anim.SetBool("grounded", isGrounded());
 
         if (wallJumpCd < 0.7f){
             body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
