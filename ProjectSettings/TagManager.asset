@@ -16,7 +16,7 @@ TagManager:
   - Ground
   - Player
   - Pushable
-  - 
+  - Fireball
   - 
   - 
   - 
@@ -51,4 +51,7 @@ TagManager:
     locked: 0
   - name: Ground
     uniqueID: 3278603201
+    locked: 0
+  - name: Fireball
+    uniqueID: 3283004467
     locked: 0
