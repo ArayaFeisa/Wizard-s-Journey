@@ -6,5 +6,10 @@ public class WizardAttack : MonoBehaviour
 {
     private Animator anim;
     private PlayerMovement wizardMov;
-    private float fireballCd;
+    [SerializeField] private float fireballCd;
+
+    private void Awake() {
+        anim = GetComponent<Animator>();
+        wizardMov = GetComponent<PlayerMovement>();
+    }
 }
