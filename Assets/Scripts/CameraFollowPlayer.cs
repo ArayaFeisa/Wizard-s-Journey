@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollowPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
+
     public Transform Player;
     void Start()
     {

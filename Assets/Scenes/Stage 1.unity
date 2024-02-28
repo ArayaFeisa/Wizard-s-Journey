@@ -1711,9 +1711,9 @@ GameObject:
   - component: {fileID: 364652918}
   - component: {fileID: 364652917}
   - component: {fileID: 364652916}
-  m_Layer: 6
+  m_Layer: 8
   m_Name: pushable test
-  m_TagString: Ground
+  m_TagString: Pushable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1730,7 +1730,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6992c49409675114ab23bb9b78e1c3c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  push: {fileID: 2088168332}
+  body1: {fileID: 364652917}
+  pos: {fileID: 2088168332}
 --- !u!50 &364652917
 Rigidbody2D:
   serializedVersion: 4
@@ -1790,10 +1791,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.16}
+  m_Offset: {x: 0, y: 0.00009602308}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 0.32, y: 0.32}
     newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
@@ -1801,7 +1802,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 0.32, y: 0.3226651}
   m_EdgeRadius: 0
 --- !u!212 &364652919
 SpriteRenderer:
@@ -1844,7 +1845,7 @@ SpriteRenderer:
   m_SortingLayerID: 211939285
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 8757435366444553519, guid: c0a280b9bc1de644493efb28f09aad92, type: 3}
+  m_Sprite: {fileID: 21300000, guid: edb1a17f93370e54fbba1dbf3a94586a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1864,8 +1865,8 @@ Transform:
   m_GameObject: {fileID: 364652915}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.97, y: -2.35, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalPosition: {x: 3.97, y: -2.05, z: 0}
+  m_LocalScale: {x: 3, y: 3, z: 5}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -5273,6 +5274,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   vel: {x: 0, y: 0}
+  facing: 0
+  offset: 2
+  push: {fileID: 364652916}
+  summonPush: {fileID: 364652915}
 --- !u!95 &2088168333
 Animator:
   serializedVersion: 5

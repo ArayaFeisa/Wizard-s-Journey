@@ -5,22 +5,18 @@ using UnityEngine;
 public class PushAbleScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public PlayerMovement push;
-    private Rigidbody2D body;
-    private bool pushed;
+    [SerializeField] public Rigidbody2D body1;
+    public PlayerMovement pos;
     void Start()
     {
-        body = GetComponent<Rigidbody2D>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.E))
-        {
-            body.velocity = push.vel;
-        }
-        if (body.velocity == Vector2.zero)
+        //body.transform.localScale += new Vector3(0.01f, 0.01f, 0.01f);
+        if (body1.velocity == Vector2.zero)
         {
             gameObject.tag = "Ground";
             gameObject.layer = 6;

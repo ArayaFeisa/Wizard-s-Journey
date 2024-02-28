@@ -17,11 +17,19 @@ public class PlayerMovement : MonoBehaviour
     private float horizontalInput;
     public Vector2 vel;
 
+    public bool facing;
+    private bool inactive;
+    public int offset;
+    private float pushAbleTimer;
+    public PushAbleScript push;
+    public GameObject summonPush;
+
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
-
+        summonPush.SetActive(false);
+        inactive = true;
         doubleJumpUnlocked = true;
     }
 
@@ -64,6 +72,32 @@ public class PlayerMovement : MonoBehaviour
         } else {
             wallJumpCd += Time.deltaTime;
         }
+
+        if (inactive && Input.GetKey(KeyCode.E))
+        {
+            summonPush.SetActive(true);
+            push.transform.position = transform.position + new Vector3(offset, 0, 0);
+            inactive = false;
+            pushAbleTimer = 0;
+        }
+        else if (Input.GetKey(KeyCode.E))
+        {
+            push.body1.velocity = vel;
+        }
+
+        if (!inactive)
+        {
+            if (pushAbleTimer < 5)
+            {
+                pushAbleTimer += Time.deltaTime;
+            }
+            else
+            {
+                summonPush.SetActive(false);
+                inactive = true;
+            }
+        }
+
     }
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, speed);
