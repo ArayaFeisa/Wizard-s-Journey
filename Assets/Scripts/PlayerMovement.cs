@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpCd;
     private bool doubleJumpUnlocked;
     private bool doubleJumpCD;
+    private float horizontalInput;
     public Vector2 vel;
 
     private void Awake() {
@@ -26,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update() {
         vel = body.velocity;
-        float horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
 
         if (horizontalInput > 0.01f){
             transform.localScale = Vector3.one*5f;
@@ -43,6 +44,7 @@ public class PlayerMovement : MonoBehaviour
 
             if (Input.GetKey(KeyCode.Space) && isGrounded()){
                 Jump();
+                anim.SetTrigger("jump");
             }
             if (Input.GetKeyDown(KeyCode.Space) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
             {
@@ -73,5 +75,8 @@ public class PlayerMovement : MonoBehaviour
     private bool onWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
         return raycastHit.collider != null;
+    }
+    private bool canAttack(){
+        return horizontalInput == 0 && !onWall(); 
     }
 }
