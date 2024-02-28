@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float wallJumpCd;
     private bool doubleJumpUnlocked;
     private bool doubleJumpCD;
+    public Vector2 vel;
 
     private void Awake() {
         body = GetComponent<Rigidbody2D>();
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
+        vel = body.velocity;
         float horizontalInput = Input.GetAxis("Horizontal");
 
         if (horizontalInput > 0.01f){
