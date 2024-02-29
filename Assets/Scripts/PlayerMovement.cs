@@ -36,46 +36,63 @@ public class PlayerMovement : MonoBehaviour
     private void Update() {
         vel = body.velocity;
         horizontalInput = Input.GetAxis("Horizontal");
-
-        if (horizontalInput > 0.01f){
-            facing = true;
-            transform.localScale = Vector3.one*5f;
-        }
-        else if (horizontalInput < -0.01f) {
-            facing = false;
-            transform.localScale = new Vector3(-5, 5, 5);
-        }
+        horizontalMovement();
+        summonPushable();
 
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
 
         body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
-        if (wallJumpCd < 0.7f){
-
-            if (Input.GetKey(KeyCode.Space) && isGrounded()){
-                Jump();
-                anim.SetTrigger("jump");
-            }
-            if (Input.GetKeyDown(KeyCode.Space) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
-            {
-                Jump();
-                doubleJumpCD = false;
-            }
-            if (isGrounded())
-            {
-                doubleJumpCD = true;
-            }
-            if (onWall() && !isGrounded()){
-                body.velocity = new Vector2(0, body.velocity.y);
-            } else {
-                body.gravityScale = 2;
-            }
-            
-        } else {
-            wallJumpCd += Time.deltaTime;
+        if (Input.GetKey(KeyCode.Space) && isGrounded()){
+            Jump();
+            anim.SetTrigger("jump");
         }
+        if (Input.GetKeyDown(KeyCode.Space) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
+        {
+            Jump();
+            doubleJumpCD = false;
+        }
+        if (isGrounded())
+        {
+            doubleJumpCD = true;
+        }
+        if (onWall() && !isGrounded()){
+            body.velocity = new Vector2(0, body.velocity.y);
+        } 
+            
+    }
+    private void Jump(){
+        body.velocity = new Vector2(body.velocity.x, speed);
+    }
+    private bool isGrounded(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        return raycastHit.collider != null;
+    }
+    private bool onWall(){
+        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
+        return raycastHit.collider != null;
+    }
+    public bool canAttack(){
+        return !onWall(); //&& horizontalInput == 0; 
+    }
 
+    private void horizontalMovement()
+    {
+        if (horizontalInput > 0.01f)
+        {
+            facing = true;
+            transform.localScale = Vector3.one * 5f;
+        }
+        else if (horizontalInput < -0.01f)
+        {
+            facing = false;
+            transform.localScale = new Vector3(-5, 5, 5);
+        }
+    }
+
+    private void summonPushable()
+    {
         if (inactive && Input.GetKey(KeyCode.E))
         {
             summonPush.SetActive(true);
@@ -100,20 +117,5 @@ public class PlayerMovement : MonoBehaviour
                 inactive = true;
             }
         }
-
-    }
-    private void Jump(){
-        body.velocity = new Vector2(body.velocity.x, speed);
-    }
-    private bool isGrounded(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
-        return raycastHit.collider != null;
-    }
-    private bool onWall(){
-        RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
-        return raycastHit.collider != null;
-    }
-    public bool canAttack(){
-        return !onWall(); //&& horizontalInput == 0; 
     }
 }
