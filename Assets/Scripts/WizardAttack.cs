@@ -26,7 +26,16 @@ public class WizardAttack : MonoBehaviour
         anim.SetTrigger("attack");
         cdTimer = 0;
 
-        fireballs[0].transform.position = firePoint.position;
-        fireballs[0].GetComponent<Fireball>().setDirection(Mathf.Sign(transform.localScale.x));
+        fireballs[findFireball()].transform.position = firePoint.position;
+        fireballs[findFireball()].GetComponent<Fireball>().setDirection(Mathf.Sign(transform.localScale.x));
+    }
+
+    private int findFireball(){
+        for (int i = 0; i < fireballs.Length; i++){
+            if (!fireballs[i].activeInHierarchy){
+                return i;
+            }
+        }
+        return 0;
     }
 }

@@ -9,6 +9,7 @@ public class Fireball : MonoBehaviour
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator anim;
+    private float lifetime;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -20,6 +21,12 @@ public class Fireball : MonoBehaviour
         }
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
+
+        lifetime += Time.deltaTime;
+        if (lifetime > 3){
+            gameObject.SetActive(false);
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D other) {
         hit = true;
@@ -27,6 +34,7 @@ public class Fireball : MonoBehaviour
         anim.SetTrigger("explode");
     }
     public void setDirection(float _direction){
+        lifetime = 0;
         direction = _direction;
 
         gameObject.SetActive(true);
