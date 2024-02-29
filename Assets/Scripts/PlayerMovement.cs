@@ -6,6 +6,12 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayer;
+    [SerializeField] private TrailRenderer trail;
+
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashSpeed = 5f;
+    private float dashCD = 1f;
     // public bool midAir;
     // public groundCheckTest check;
     private Rigidbody2D body;
@@ -24,9 +30,6 @@ public class PlayerMovement : MonoBehaviour
     public PushAbleScript push;
     public GameObject summonPush;
 
-    private bool isDashing;
-    private float dashDistance;
-
     private void Awake() {
         isDashing = false;
         body = GetComponent<Rigidbody2D>();
@@ -38,6 +41,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
+        if (isDashing)
+        {
+            return;
+        }
         vel = body.velocity;
         horizontalInput = Input.GetAxis("Horizontal");
         horizontalMovement();
@@ -69,21 +76,12 @@ public class PlayerMovement : MonoBehaviour
 
         if(!isDashing && !onWall()) body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
-            Dash();
+            StartCoroutine(Dash());
         }
     }
 
-    private void Dash()
-    {
-        isDashing = true;
-        body.gravityScale = 0;
-        dashDistance = (facing) ? 200 : -200;
-        body.velocity = new Vector2(dashDistance,0);
-        body.gravityScale = 3;
-        isDashing = false;
-    }
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, speed);
     }
@@ -93,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool onWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
+        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
     public bool canAttack(){
@@ -139,5 +138,20 @@ public class PlayerMovement : MonoBehaviour
                 inactive = true;
             }
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        body.gravityScale = 0f;
+        body.velocity = new Vector2(transform.localScale.x * dashSpeed, 0f);
+        trail.emitting = true;
+        yield return new WaitForSeconds(0.2f);
+        trail.emitting = false;
+        body.gravityScale = 3f;
+        isDashing = false;
+        yield return new WaitForSeconds(dashCD);
+        canDash = true;
     }
 }
