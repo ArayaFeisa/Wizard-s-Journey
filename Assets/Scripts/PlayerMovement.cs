@@ -24,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
     public PushAbleScript push;
     public GameObject summonPush;
 
+    private bool isDashing;
+    private float dashDistance;
+
     private void Awake() {
+        isDashing = false;
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -42,13 +46,11 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
 
-        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
-
-        if (Input.GetKey(KeyCode.Space) && isGrounded()){
+        if (Input.GetKey(KeyCode.W) && isGrounded()){
             Jump();
             anim.SetTrigger("jump");
         }
-        if (Input.GetKeyDown(KeyCode.Space) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
         {
             Jump();
             doubleJumpCD = false;
@@ -59,8 +61,28 @@ public class PlayerMovement : MonoBehaviour
         }
         if (onWall() && !isGrounded()){
             body.velocity = new Vector2(0, body.velocity.y);
-        } 
-            
+        }
+        else
+        {
+            body.gravityScale = 3;
+        }
+
+        if(!isDashing && !onWall()) body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isDashing)
+        {
+            Dash();
+        }
+    }
+
+    private void Dash()
+    {
+        isDashing = true;
+        body.gravityScale = 0;
+        dashDistance = (facing) ? 200 : -200;
+        body.velocity = new Vector2(dashDistance,0);
+        body.gravityScale = 3;
+        isDashing = false;
     }
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, speed);
@@ -93,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void summonPushable()
     {
-        if (inactive && Input.GetKey(KeyCode.E))
+        if (inactive && Input.GetKeyDown(KeyCode.E))
         {
             summonPush.SetActive(true);
             push.transform.position = transform.position + new Vector3((facing) ? offset : -offset, 0, 0);
