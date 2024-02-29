@@ -38,9 +38,11 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
 
         if (horizontalInput > 0.01f){
+            facing = true;
             transform.localScale = Vector3.one*5f;
         }
         else if (horizontalInput < -0.01f) {
+            facing = false;
             transform.localScale = new Vector3(-5, 5, 5);
         }
 
@@ -76,7 +78,7 @@ public class PlayerMovement : MonoBehaviour
         if (inactive && Input.GetKey(KeyCode.E))
         {
             summonPush.SetActive(true);
-            push.transform.position = transform.position + new Vector3(offset, 0, 0);
+            push.transform.position = transform.position + new Vector3((facing) ? offset : -offset, 0, 0);
             inactive = false;
             pushAbleTimer = 0;
         }
