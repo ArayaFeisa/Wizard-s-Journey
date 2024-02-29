@@ -49,8 +49,9 @@ public class PlayerMovement : MonoBehaviour
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
 
+        body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+
         if (wallJumpCd < 0.7f){
-            body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
             if (Input.GetKey(KeyCode.Space) && isGrounded()){
                 Jump();
