@@ -28,11 +28,20 @@ public class Fireball : MonoBehaviour
         }
 
     }
-    private void OnTriggerEnter2D(Collider2D other) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!collision.gameObject.CompareTag("Player"))
+        {
+            hit = true;
+            boxCollider.enabled = false;
+            anim.SetTrigger("explode");
+        }
+    }
+    /*private void OnTriggerEnter2D(Collider2D other) {
         hit = true;
         boxCollider.enabled = false;
         anim.SetTrigger("explode");
-    }
+    }*/
     public void setDirection(float _direction){
         lifetime = 0;
         direction = _direction;

@@ -111,6 +111,6 @@ public class PlayerMovement : MonoBehaviour
         return raycastHit.collider != null;
     }
     public bool canAttack(){
-        return horizontalInput == 0 && !onWall(); 
+        return !onWall(); //&& horizontalInput == 0; 
     }
 }
