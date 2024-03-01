@@ -1,9 +1,9 @@
 using UnityEngine;
 using UnityEngine.UI;  
 
-public class HealthBar : MonoBehaviour
+public class HealthBar2 : MonoBehaviour
 {
-    [SerializeField] private Health playerHealth;
+    [SerializeField] private Health2 playerHealth;
     [SerializeField] private Image totalHealthBar;
     [SerializeField] private Image currentHealthBar;
 
