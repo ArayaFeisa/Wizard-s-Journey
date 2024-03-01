@@ -8,9 +8,11 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] private float startingHealth;
     private float currentHealth;
     private bool dead;
+    private Animator anim;
 
     private void Awake() {
         currentHealth = startingHealth;
+        anim = GetComponent<Animator>();
         healthBar.setMaxHealth(startingHealth);
     }
 
@@ -18,10 +20,10 @@ public class PlayerHealth : MonoBehaviour
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
         healthBar.setHealth(currentHealth);
         if (currentHealth > 0){
-            //anim
+            //anim hurt
         } else {
             if (!dead){
-                //anim
+                anim.SetTrigger("die");
                 GetComponent<PlayerMovement>().enabled = false;
                 dead = true;
             }
