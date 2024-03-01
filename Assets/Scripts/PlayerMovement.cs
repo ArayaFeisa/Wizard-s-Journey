@@ -29,8 +29,11 @@ public class PlayerMovement : MonoBehaviour
     private float pushAbleTimer;
     public PushAbleScript push;
     public GameObject summonPush;
+    public doorScript door;
 
+    public Transform levers;
     private void Awake() {
+        //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -94,7 +97,6 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool onWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
-        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
     public bool canAttack(){
@@ -156,5 +158,22 @@ public class PlayerMovement : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCD);
         canDash = true;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Lever"))
+        {
+            Debug.Log("interact");
+            door.interactAble = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Lever"))
+        {
+            door.interactAble = false;
+        }
     }
 }
