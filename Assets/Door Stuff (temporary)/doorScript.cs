@@ -30,8 +30,12 @@ public class doorScript : MonoBehaviour
     private IEnumerator Open()
     {
         opening = true;
-        yield return new WaitForSeconds(0.1f);
-        while(transform.rotation != Quaternion.Euler(new Vector3(90, 0, 0))) transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x + 1f, 0, 0));
+        while (transform.rotation != Quaternion.Euler(new Vector3(90, 0, 0)))
+        {
+            yield return new WaitForSeconds(0.02f);
+            transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x + 1f, 0, 0));
+            transform.position = new Vector2(transform.position.x, transform.position.y - 0.016f);
+        }
         yield return new WaitForSeconds(0.1f);
         opening = false;
         open = true;
@@ -40,8 +44,12 @@ public class doorScript : MonoBehaviour
     private IEnumerator Close()
     {
         opening = true;
-        yield return new WaitForSeconds(0.1f);
-        while (transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0))) transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x - 1f, 0, 0));
+        while (transform.rotation != Quaternion.Euler(new Vector3(0, 0, 0)))
+        {
+            yield return new WaitForSeconds(0.02f);
+            transform.rotation = Quaternion.Euler(new Vector3(transform.eulerAngles.x - 1f, 0, 0));
+            transform.position = new Vector2(transform.position.x, transform.position.y + 0.016f);
+        }
         yield return new WaitForSeconds(0.1f);
         opening = false;
         open = false;

@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - Pushable
   - Lever
+  - Button
   layers:
   - Default
   - TransparentFX
@@ -18,7 +19,7 @@ TagManager:
   - Player
   - Pushable
   - Fireball
-  - 
+  - Button
   - 
   - 
   - 
