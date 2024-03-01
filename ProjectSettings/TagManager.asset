@@ -18,8 +18,8 @@ TagManager:
   - Ground
   - Player
   - Pushable
-  - Fireball
   - Button
+  - Enemy
   - 
   - 
   - 
