@@ -49,11 +49,14 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         horizontalMovement();
         summonPushable();
-
+        Movement();
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
-
-        if (Input.GetKey(KeyCode.W) && isGrounded()){
+    }
+    private void Movement()
+    {
+        if (Input.GetKey(KeyCode.W) && isGrounded())
+        {
             Jump();
             anim.SetTrigger("jump");
         }
@@ -66,7 +69,8 @@ public class PlayerMovement : MonoBehaviour
         {
             doubleJumpCD = true;
         }
-        if (onWall() && !isGrounded()){
+        if (onWall() && !isGrounded())
+        {
             body.velocity = new Vector2(0, body.velocity.y);
         }
         else
@@ -74,14 +78,13 @@ public class PlayerMovement : MonoBehaviour
             body.gravityScale = 3;
         }
 
-        if(!isDashing && !onWall()) body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
+        if (!isDashing && !onWall()) body.velocity = new Vector2(horizontalInput * speed, body.velocity.y);
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
             StartCoroutine(Dash());
         }
     }
-
     private void Jump(){
         body.velocity = new Vector2(body.velocity.x, speed);
     }
