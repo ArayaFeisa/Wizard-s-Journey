@@ -12,7 +12,7 @@ public class PlayerRespawn : MonoBehaviour
         playerHealth = GetComponent<Health>();
     }
 
-    public void Respawn(){
+    public void CheckRespawn(){
         transform.position = currentCheckpoint.position; // move to cp
         playerHealth.Respawn();
 

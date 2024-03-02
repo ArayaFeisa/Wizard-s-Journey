@@ -58,13 +58,14 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(7, 10, false);
     }
 
-    private void AddHealth(float _value){
-        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
-    }
+    // regen (yet to use)
+    // private void AddHealth(float _value){
+    //     currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    // }
 
     public void Respawn(){
         dead = false;
-        // AddHealth(startingHealth);
+
         healthBar.setMaxHealth(startingHealth);
         anim.ResetTrigger("die");
         anim.Play("idle");
