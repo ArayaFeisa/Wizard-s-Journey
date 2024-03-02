@@ -10,6 +10,7 @@ TagManager:
   - Button
   - Enemy
   - Checkpoint
+  - FireOrb
   layers:
   - Default
   - TransparentFX

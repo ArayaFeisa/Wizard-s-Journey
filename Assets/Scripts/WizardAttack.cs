@@ -10,6 +10,7 @@ public class WizardAttack : MonoBehaviour
     private Animator anim;
     private PlayerMovement wizardMov;
     private float cdTimer = Mathf.Infinity;
+    private bool canAttack;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -17,7 +18,7 @@ public class WizardAttack : MonoBehaviour
     }
 
     private void Update() {
-        if (Input.GetMouseButton(0) && cdTimer > fireballCd && wizardMov.canAttack()){
+        if (canAttack && Input.GetMouseButton(0) && cdTimer > fireballCd && wizardMov.canAttack()){
             Attack();
         }
         cdTimer += Time.deltaTime;
@@ -37,5 +38,12 @@ public class WizardAttack : MonoBehaviour
             }
         }
         return 0;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.CompareTag("FireOrb")) {
+            canAttack = true;
+            collision.gameObject.SetActive(false);
+        }
     }
 }
