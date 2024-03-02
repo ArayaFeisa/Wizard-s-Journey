@@ -34,8 +34,10 @@ public class Health : MonoBehaviour
             StartCoroutine(immune());
         } else {
             if (!dead){
+                anim.SetBool("grounded", true);
                 anim.SetTrigger("die");
 
+                //nonaktif semua komponen dikelasnya
                 foreach (Behaviour component in components) {
                     component.enabled = false;
                 }
@@ -54,6 +56,24 @@ public class Health : MonoBehaviour
         }
 
         Physics2D.IgnoreLayerCollision(7, 10, false);
+    }
+
+    private void AddHealth(float _value){
+        currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
+    }
+
+    public void Respawn(){
+        dead = false;
+        // AddHealth(startingHealth);
+        healthBar.setMaxHealth(startingHealth);
+        anim.ResetTrigger("die");
+        anim.Play("idle");
+        StartCoroutine(immune());
+
+        //aktifin semua komponen dikelasnya
+        foreach (Behaviour component in components) {
+            component.enabled = true;
+        }
     }
 
     private void deactivate(){

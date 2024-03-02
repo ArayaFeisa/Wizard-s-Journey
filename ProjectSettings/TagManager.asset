@@ -9,6 +9,7 @@ TagManager:
   - Lever
   - Button
   - Enemy
+  - Checkpoint
   layers:
   - Default
   - TransparentFX
