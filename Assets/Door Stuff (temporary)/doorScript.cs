@@ -61,13 +61,13 @@ public class doorScript : MonoBehaviour
         {
             Debug.Log("open");
             StartCoroutine(Open());
-            head.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 30));
+            head.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -30));
         }
         if(Input.GetKeyDown(KeyCode.Q) && open && !opening)
         {
             Debug.Log("close");
             StartCoroutine(Close());
-            head.transform.rotation = Quaternion.Euler(new Vector3(0, 0, -30));
+            head.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 30));
         }
     }
 }

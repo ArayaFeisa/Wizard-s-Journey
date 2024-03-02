@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    private float jumpPow=12;
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trail;
@@ -89,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void Jump(){
-        body.velocity = new Vector2(body.velocity.x, speed);
+        body.velocity = new Vector2(body.velocity.x, jumpPow);
     }
     private bool isGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
@@ -133,7 +134,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!inactive)
         {
-            if (pushAbleTimer < 5)
+            if (pushAbleTimer < 10)
             {
                 pushAbleTimer += Time.deltaTime;
             }

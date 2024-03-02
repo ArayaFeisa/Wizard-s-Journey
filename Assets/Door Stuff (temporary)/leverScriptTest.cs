@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class leverScriptTest : MonoBehaviour
 {
-    public PlayerMovement enter;
     public doorScript door;
     // Start is called before the first frame update
     void Start()
     {
-        enter.GetComponent<PlayerMovement>();
+        
     }
 
     // Update is called once per frame

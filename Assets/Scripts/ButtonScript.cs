@@ -8,15 +8,17 @@ public class ButtonScript : MonoBehaviour
     public ButtonDoorScript door;
     private bool pressed = false;
     private bool pressing = false;
+    private float startPos;
     void Start()
     {
-        
+        startPos = transform.position.y;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(transform.position == new Vector3(transform.position.x, -2.71f))
+        Debug.Log(transform.position.y);
+        if(transform.position.y <= startPos - 0.04f)
         {
             door.buttonDown = true;
         }
@@ -32,18 +34,18 @@ public class ButtonScript : MonoBehaviour
         pressing = true;
         if (pressed)
         {
-            if (transform.position.y >= -2.701f)
+            if (transform.position.y > startPos - 0.04f)
             {
-                yield return new WaitForSeconds(0.02f);
-                transform.position = new Vector2(transform.position.x, transform.position.y - 0.01f);
+                yield return new WaitForSeconds(0.01f);
+                transform.position = new Vector2(transform.position.x, transform.position.y - 0.001f);
             }
         } 
         else
         {
-            if (transform.position.y <= -2.501f)
+            if (transform.position.y < startPos)
             {
-                yield return new WaitForSeconds(0.02f);
-                transform.position = new Vector2(transform.position.x, transform.position.y + 0.01f);
+                yield return new WaitForSeconds(0.01f);
+                transform.position = new Vector2(transform.position.x, transform.position.y + 0.001f);
             }
         }
         pressing = false;

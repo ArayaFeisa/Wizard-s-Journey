@@ -57,3 +57,6 @@ TagManager:
   - name: Fireball
     uniqueID: 3283004467
     locked: 0
+  - name: Lever
+    uniqueID: 1407705809
+    locked: 0
