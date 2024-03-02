@@ -34,7 +34,7 @@ public class Health : MonoBehaviour
             StartCoroutine(immune());
         } else {
             if (!dead){
-                anim.SetBool("grounded", true);
+                // anim.SetBool("grounded", true);
                 anim.SetTrigger("die");
 
                 //nonaktif semua komponen dikelasnya
