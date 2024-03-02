@@ -170,6 +170,8 @@ MonoBehaviour:
   startingHealth: 20
   immuneDuration: 0
   numberOfflashes: 0
+  components:
+  - {fileID: 7804679255810958767}
 --- !u!114 &7804679255810958767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -184,8 +186,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCD: 1
   range: 1.19
-  colliderDistance: 0.02
   damage: 20
+  colliderDistance: 0.02
   boxCollider: {fileID: 8451348413896156421}
   playerLayer:
     serializedVersion: 2

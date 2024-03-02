@@ -17,6 +17,9 @@ public class Health : MonoBehaviour
     [SerializeField] private int numberOfflashes;
     private SpriteRenderer spriteRend;
 
+    [Header ("Components")]
+    [SerializeField] private Behaviour[] components;
+
     private void Awake() {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
@@ -31,22 +34,11 @@ public class Health : MonoBehaviour
             StartCoroutine(immune());
         } else {
             if (!dead){
-                
                 anim.SetTrigger("die");
 
-                //player
-                if(GetComponent<PlayerMovement>() != null){
-                    GetComponent<PlayerMovement>().enabled = false;
+                foreach (Behaviour component in components) {
+                    component.enabled = false;
                 }
-
-                //enemy
-                if(GetComponentInParent<EnemyPatrol>() != null){
-                    GetComponentInParent<EnemyPatrol>().enabled = false;
-                }
-                if(GetComponent<MeleeEnemy>() != null){
-                    GetComponent<MeleeEnemy>().enabled = false;
-                }
-
                 dead = true;
             }
         }
@@ -63,10 +55,4 @@ public class Health : MonoBehaviour
 
         Physics2D.IgnoreLayerCollision(7, 10, false);
     }
-
-    // private void Update() {
-    //     if (Input.GetKeyDown(KeyCode.Z)){
-    //         takeDamage(20);
-    //     }
-    // }
 }
