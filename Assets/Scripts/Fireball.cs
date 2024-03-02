@@ -34,7 +34,7 @@ public class Fireball : MonoBehaviour
         anim.SetTrigger("explode");
 
         if(collision.tag == "Enemy"){
-            collision.GetComponent<PlayerHealth>().takeDamage(20);
+            collision.GetComponent<Health>().takeDamage(20);
         }
     }
     public void setDirection(float _direction){

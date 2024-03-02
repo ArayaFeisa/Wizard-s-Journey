@@ -5718,8 +5718,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 459241149}
   startingHealth: 100
-  immuneDuration: 2
-  numberOfflashes: 3
+  immuneDuration: 1
+  numberOfflashes: 2
 --- !u!1001 &678955842310375535
 PrefabInstance:
   m_ObjectHideFlags: 0

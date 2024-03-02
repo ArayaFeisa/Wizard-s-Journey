@@ -18,7 +18,7 @@ public class MeleeEnemy : MonoBehaviour
     [SerializeField] private LayerMask playerLayer;
     private float cdTimer = Mathf.Infinity;
     private Animator anim;
-    private PlayerHealth playerHealth;
+    private Health playerHealth;
     private EnemyPatrol enemyPatrol;
 
     private void Awake() {
@@ -46,7 +46,7 @@ public class MeleeEnemy : MonoBehaviour
             , 0, Vector2.left, 0, playerLayer);
 
         if (hit.collider != null){
-            playerHealth = hit.transform.GetComponent<PlayerHealth>();
+            playerHealth = hit.transform.GetComponent<Health>();
         }
         return hit.collider != null;
     }
