@@ -58,7 +58,6 @@ public class Health : MonoBehaviour
         Physics2D.IgnoreLayerCollision(7, 10, false);
     }
 
-    // regen (yet to use)
     private void AddHealth(float _value){
         currentHealth = Mathf.Clamp(currentHealth + _value, 0, startingHealth);
     }
