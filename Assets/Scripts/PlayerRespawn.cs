@@ -7,31 +7,37 @@ public class PlayerRespawn : MonoBehaviour
     // [SerializeField] private AudioClip checkpointSound;
     private Transform currentCheckpoint;
     private Health playerHealth;
-    private int attempts = 3;
+    private int attempts = 2;
+    private bool checkpointed;
 
     private void Awake() {
         playerHealth = GetComponent<Health>();
+        checkpointed = false;
     }
 
     public void CheckRespawn(){
-        if (attempts > 0){
+        if (!checkpointed) {
+            ResetGame();
+        } else {
+            if (attempts > 0){
             attempts--;
 
             transform.position = currentCheckpoint.position; // move to cp
             playerHealth.Respawn();
 
-        //camera
+            //camera
             Camera.main.GetComponent<CameraFollowPlayer>();
-        } else {
-            ResetGame();
+            } else {
+                ResetGame();
+            }
         }
-        
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Checkpoint"){
             currentCheckpoint = collision.transform;
             collision.GetComponent<Collider2D>().enabled = false;
+            checkpointed = true;
         }
     }
 
@@ -40,7 +46,8 @@ public class PlayerRespawn : MonoBehaviour
         Collider2D checkpoints = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Collider2D>();
         checkpoints.enabled = true;
 
-        attempts = 3;
+        attempts = 2;
+        checkpointed = false;
         transform.position = new Vector3(-14, 1, 0);
         playerHealth.Respawn();
         Debug.Log("Game Reset");
