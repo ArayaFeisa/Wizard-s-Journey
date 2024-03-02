@@ -17,7 +17,6 @@ public class ButtonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.position.y);
         if(transform.position.y <= startPos - 0.04f)
         {
             door.buttonDown = true;

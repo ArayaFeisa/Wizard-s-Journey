@@ -59,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+        Debug.Log(boxCollider);
         if (Input.GetKey(KeyCode.W) && isGrounded())
         {
             Jump();
@@ -94,10 +95,12 @@ public class PlayerMovement : MonoBehaviour
     }
     private bool isGrounded(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, Vector2.down, 0.1f, groundLayer);
+        Debug.Log("isGrounded" + raycastHit.collider);
         return raycastHit.collider != null;
     }
     private bool onWall(){
         RaycastHit2D raycastHit = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0, new Vector2(transform.localScale.x,0), 0.1f, groundLayer);
+        Debug.Log("onWall" + raycastHit.collider);
         return raycastHit.collider != null;
     }
     public bool canAttack(){
@@ -106,12 +109,12 @@ public class PlayerMovement : MonoBehaviour
 
     private void horizontalMovement()
     {
-        if (horizontalInput > 0.01f)
+        if (horizontalInput > 0)
         {
             facing = true;
             transform.localScale = Vector3.one * 5f;
         }
-        else if (horizontalInput < -0.01f)
+        else if (horizontalInput < 0)
         {
             facing = false;
             transform.localScale = new Vector3(-5, 5, 5);
