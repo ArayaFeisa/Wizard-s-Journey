@@ -1,14 +1,20 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MeleeEnemy : MonoBehaviour
 {
+    [Header ("Attack")]
     [SerializeField] private float attackCD;
     [SerializeField] private float range;
-    [SerializeField] private float colliderDistance;
     [SerializeField] private int damage;
+
+    [Header ("Collider")]
+    [SerializeField] private float colliderDistance;
     [SerializeField] private BoxCollider2D boxCollider;
+
+    [Header ("Player")]
     [SerializeField] private LayerMask playerLayer;
     private float cdTimer = Mathf.Infinity;
     private Animator anim;
