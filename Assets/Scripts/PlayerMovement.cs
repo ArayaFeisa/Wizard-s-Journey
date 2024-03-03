@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float jumpPow=12;
+    private float jumpPow=14;
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trail;
@@ -59,6 +59,14 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
+        if(body.velocity.y < 0)
+        {
+            body.gravityScale = 5f;
+        }
+        else
+        {
+            body.gravityScale = 3f;
+        }
         Debug.Log(boxCollider);
         if (Input.GetKey(KeyCode.W) && isGrounded())
         {
