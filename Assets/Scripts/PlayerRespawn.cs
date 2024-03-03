@@ -9,15 +9,18 @@ public class PlayerRespawn : MonoBehaviour
     private Health playerHealth;
     private int attempts = 2;
     private bool checkpointed;
+    private UIManager uiManager;
 
     private void Awake() {
         playerHealth = GetComponent<Health>();
         checkpointed = false;
+        uiManager = FindObjectOfType<UIManager>();
     }
 
     public void CheckRespawn(){
         if (!checkpointed) {
-            ResetGame();
+            uiManager.GameOver();
+            // ResetGame();
         } else {
             if (attempts > 0){
             attempts--;
@@ -28,7 +31,8 @@ public class PlayerRespawn : MonoBehaviour
             //camera
             Camera.main.GetComponent<CameraFollowPlayer>();
             } else {
-                ResetGame();
+                // ResetGame();
+                uiManager.GameOver();
             }
         }
     }
@@ -41,15 +45,15 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    private void ResetGame()
-    {
-        Collider2D checkpoints = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Collider2D>();
-        checkpoints.enabled = true;
+    // private void ResetGame()
+    // {
+    //     Collider2D checkpoints = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Collider2D>();
+    //     checkpoints.enabled = true;
 
-        attempts = 2;
-        checkpointed = false;
-        transform.position = new Vector3(-14, 1, 0);
-        playerHealth.Respawn();
-        Debug.Log("Game Reset");
-    }
+    //     attempts = 2;
+    //     checkpointed = false;
+    //     transform.position = new Vector3(-21, -3, 0);
+    //     playerHealth.Respawn();
+    //     Debug.Log("Game Reset");
+    // }
 }
