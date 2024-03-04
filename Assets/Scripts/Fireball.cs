@@ -9,6 +9,7 @@ public class Fireball : MonoBehaviour
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator anim;
+    private ParticleSystem em;
     private float lifetime;
 
     private void Awake() {
@@ -21,7 +22,6 @@ public class Fireball : MonoBehaviour
         }
         float movementSpeed = speed * Time.deltaTime * direction;
         transform.Translate(movementSpeed, 0, 0);
-
         lifetime += Time.deltaTime;
         if (lifetime > 3){
             gameObject.SetActive(false);
@@ -29,9 +29,15 @@ public class Fireball : MonoBehaviour
 
     }
     private void OnTriggerEnter2D(Collider2D collision) {
-        hit = true;
-        boxCollider.enabled = false;
-        anim.SetTrigger("explode");
+        if(collision.tag == "Enemy" || collision.tag == "Ground")
+        {
+            hit = true;
+            boxCollider.enabled = false;
+            anim.SetTrigger("explode");
+            GetComponent<ParticleSystem>().Play();
+            ParticleSystem.EmissionModule em = GetComponent<ParticleSystem>().emission;
+            em.enabled = true;
+        }
 
         if(collision.tag == "Enemy"){
             collision.GetComponent<Health>().takeDamage(20);
