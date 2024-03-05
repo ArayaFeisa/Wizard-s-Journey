@@ -7,6 +7,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
     public GameObject lvl1;
     public GameObject lvlSelect;
     public Transform playerPos;
+    public Lvl2PortalScript lvl2;
     private bool inPortal;
     void Start()
     {
@@ -21,6 +22,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
             lvl1.SetActive(false);
             lvlSelect.SetActive(true);
             playerPos.transform.position = new Vector2(-21, -3);
+            lvl2.lvl2Unlocked = true;
         }
     }
 
