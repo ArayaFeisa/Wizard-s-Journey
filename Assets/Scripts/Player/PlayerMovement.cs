@@ -33,6 +33,11 @@ public class PlayerMovement : MonoBehaviour
     public doorScript door;
 
     public Transform levers;
+
+    private float coyoteTime = 0.1f;
+    private float coyoteTimer;
+    private float jumpBufferTime = 0.1f;
+    private float jumpBufferTimer;
     private void Awake() {
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
@@ -59,24 +64,34 @@ public class PlayerMovement : MonoBehaviour
     }
     private void Movement()
     {
-        if(body.velocity.y < 0)
+        if (isGrounded())
         {
-            body.gravityScale = 5f;
+            coyoteTimer = coyoteTime;
         }
         else
         {
-            body.gravityScale = 3f;
+            coyoteTimer -= Time.deltaTime;
         }
-        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.W)){
+            jumpBufferTimer = jumpBufferTime;
+        }
+        else
+        {
+            jumpBufferTimer -= Time.deltaTime;
+        }
+        if (jumpBufferTimer > 0 && coyoteTimer > 0f)
         {
             Jump();
+            jumpBufferTimer = 0f;
+            doubleJumpCD = true;
             anim.SetTrigger("jump");
         }
         if(Input.GetKeyUp(KeyCode.W) && body.velocity.y > 0f)
         {
             body.velocity = new Vector2(body.velocity.x, body.velocity.y * 0.5f);
+            coyoteTimer = 0f;
         }
-        if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && doubleJumpUnlocked && !isGrounded() && coyoteTimer <= 0f)
         {
             Jump();
             doubleJumpCD = false;
