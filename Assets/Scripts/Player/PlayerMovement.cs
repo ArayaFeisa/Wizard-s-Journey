@@ -72,6 +72,10 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             anim.SetTrigger("jump");
         }
+        if(Input.GetKeyUp(KeyCode.W) && body.velocity.y > 0f)
+        {
+            body.velocity = new Vector2(body.velocity.x, body.velocity.y * 0.5f);
+        }
         if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && doubleJumpUnlocked && !isGrounded())
         {
             Jump();
