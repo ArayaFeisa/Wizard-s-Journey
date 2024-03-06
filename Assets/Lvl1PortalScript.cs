@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Lvl1PortalScript : MonoBehaviour
@@ -8,6 +10,7 @@ public class Lvl1PortalScript : MonoBehaviour
     public GameObject lvl1;
     public GameObject lvlSelect;
     public Transform playerPos;
+    public CinemachineVirtualCamera vcam;
     private bool inPortal;
     void Start()
     {
@@ -18,11 +21,9 @@ public class Lvl1PortalScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(inPortal && Input.GetKeyDown(KeyCode.Q))
+        if (inPortal && Input.GetKeyDown(KeyCode.Q))
         {
-            lvl1.SetActive(true);
-            lvlSelect.SetActive(false);
-            playerPos.transform.position = new Vector2(-21, -3);
+            StartCoroutine(enterLvl1());
         }
     }
 
@@ -33,5 +34,22 @@ public class Lvl1PortalScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inPortal = false;
+    }
+
+    private IEnumerator enterLvl1()
+    {
+        for (int i = 0; i < 66; i++)
+        {
+            vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
+            yield return new WaitForSeconds(0.015f);
+        }
+        lvl1.SetActive(true);
+        playerPos.transform.position = new Vector2(-21, -3);
+        for (int i = 0; i < 66; i++)
+        {
+            vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize + 0.1f;
+            yield return new WaitForSeconds(0.015f);
+        }
+        lvlSelect.SetActive(false);
     }
 }
