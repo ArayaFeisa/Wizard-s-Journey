@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             body.gravityScale = 3f;
         }
-        if (Input.GetKey(KeyCode.W) && isGrounded())
+        if (Input.GetKeyDown(KeyCode.W) && isGrounded())
         {
             Jump();
             anim.SetTrigger("jump");
