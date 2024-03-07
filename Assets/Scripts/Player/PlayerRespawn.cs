@@ -15,7 +15,7 @@ public class PlayerRespawn : MonoBehaviour
         playerHealth = GetComponent<Health>();
         checkpointed = false;
         uiManager = FindObjectOfType<UIManager>();
-        DontDestroyOnLoad(this.gameObject);
+        // DontDestroyOnLoad(this.gameObject);
 
     }
 

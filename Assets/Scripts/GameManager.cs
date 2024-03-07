@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
+    public bool canAttack;
+    private void Awake() {
+
+        if(instance != null) return;
+        instance = this;
+        DontDestroyOnLoad(this.gameObject);
+    }
+    public void Test(){
+
+    }
     // Start is called before the first frame update
     void Start()
     {

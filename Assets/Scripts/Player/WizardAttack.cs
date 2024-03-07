@@ -11,10 +11,17 @@ public class WizardAttack : MonoBehaviour
     private PlayerMovement wizardMov;
     private float cdTimer = Mathf.Infinity;
     private bool canAttack;
+    private int numAttack;
 
     private void Awake() {
         anim = GetComponent<Animator>();
         wizardMov = GetComponent<PlayerMovement>();
+        canAttack = GameManager.instance.canAttack;
+        GameManager.instance.Test();
+    }
+    private void Start() {
+        numAttack = 0;
+        Debug.Log(PlayerPrefs.GetInt("numAttack"));
     }
 
     private void Update() {
@@ -43,6 +50,10 @@ public class WizardAttack : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("FireOrb")) {
             canAttack = true;
+            GameManager.instance.canAttack = canAttack;
+            // numAttack = 1;
+            // PlayerPrefs.SetInt("numAttack", 1);
+            // Debug.Log(PlayerPrefs.GetInt("numAttack"));
             collision.gameObject.SetActive(false);
         }
     }

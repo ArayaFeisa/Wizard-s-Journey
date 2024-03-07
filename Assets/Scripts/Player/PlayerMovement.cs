@@ -47,6 +47,10 @@ public class PlayerMovement : MonoBehaviour
         summonPush.SetActive(false);
         inactive = true;
         doubleJumpUnlocked = true;
+        
+    }
+    private void Start() {
+        // Debug.Log(PlayerPrefs.GetInt("Lompat"));
     }
 
     private void Update() {
@@ -117,6 +121,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void Jump(){
+        // PlayerPrefs.SetInt("Lompat", 5);
         body.velocity = new Vector2(body.velocity.x, jumpPow);
     }
     private bool isGrounded(){
