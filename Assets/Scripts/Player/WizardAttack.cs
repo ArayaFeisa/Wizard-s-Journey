@@ -11,7 +11,7 @@ public class WizardAttack : MonoBehaviour
     private PlayerMovement wizardMov;
     private float cdTimer = Mathf.Infinity;
     private bool canAttack;
-    private int numAttack;
+    // private int numAttack;
 
     private void Awake() {
         anim = GetComponent<Animator>();
@@ -19,10 +19,10 @@ public class WizardAttack : MonoBehaviour
         canAttack = GameManager.instance.canAttack;
         GameManager.instance.Test();
     }
-    private void Start() {
-        numAttack = 0;
-        Debug.Log(PlayerPrefs.GetInt("numAttack"));
-    }
+    // private void Start() {
+    //     numAttack = 0;
+    //     Debug.Log(PlayerPrefs.GetInt("numAttack"));
+    // }
 
     private void Update() {
         if (canAttack && Input.GetMouseButton(0) && cdTimer > fireballCd && wizardMov.canAttack()){

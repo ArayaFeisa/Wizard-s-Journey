@@ -11,24 +11,22 @@ public class Lvl2PortalScript : MonoBehaviour
     void Start()
     {
         anim = GetComponentInParent<Animator>();
-        lvl2Unlocked = false;
         anim.enabled = false;
+    }
+    private void Awake() {
+        lvl2Unlocked = GameManager.instance.lvl2unlocked;
     }
 
     void Update()
     {
-        if(lvl2Unlocked)
-        {
-            anim.enabled = true;
-        }
-        if (inPortal && Input.GetKeyDown(KeyCode.Q))
-        {
-            unlockStage2();
-        }
+            if (inPortal && Input.GetKeyDown(KeyCode.Q) && lvl2Unlocked)
+            {
+                unlockStage2();
+            }
     }
 
     private void unlockStage2(){
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene("Stage 2");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -6,8 +6,8 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool canAttack;
+    public bool lvl2unlocked;
     private void Awake() {
-
         if(instance != null) return;
         instance = this;
         DontDestroyOnLoad(this.gameObject);

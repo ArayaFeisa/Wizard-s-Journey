@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Lvl1PortalScript : MonoBehaviour
 {
     // Start is called before the first frame update
-    public GameObject lvl1;
-    public GameObject lvlSelect;
     public Transform playerPos;
     public CinemachineVirtualCamera vcam;
     private bool inPortal;
     void Start()
     {
         inPortal = false;
-        lvl1.SetActive(false);
     }
 
     // Update is called once per frame
@@ -43,13 +41,12 @@ public class Lvl1PortalScript : MonoBehaviour
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
             yield return new WaitForSeconds(0.015f);
         }
-        lvl1.SetActive(true);
+        SceneManager.LoadScene("Stage 1");
         playerPos.transform.position = new Vector2(-21, -3);
         for (int i = 0; i < 66; i++)
         {
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize + 0.1f;
             yield return new WaitForSeconds(0.015f);
         }
-        lvlSelect.SetActive(false);
     }
 }
