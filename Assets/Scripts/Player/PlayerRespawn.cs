@@ -15,6 +15,8 @@ public class PlayerRespawn : MonoBehaviour
         playerHealth = GetComponent<Health>();
         checkpointed = false;
         uiManager = FindObjectOfType<UIManager>();
+        DontDestroyOnLoad(this.gameObject);
+
     }
 
     public void CheckRespawn(){
@@ -36,6 +38,7 @@ public class PlayerRespawn : MonoBehaviour
             }
         }
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.transform.tag == "Checkpoint"){

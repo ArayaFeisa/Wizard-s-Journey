@@ -7,7 +7,7 @@ public class BreakableCloudScript : MonoBehaviour
     // Start is called before the first frame update
     private float timer;
     private bool broken;
-    //private Animator anim;
+    private Animator anim;
     private BoxCollider2D collider;
     private SpriteRenderer render;
     private bool action;
@@ -16,7 +16,7 @@ public class BreakableCloudScript : MonoBehaviour
         action = false;
         broken = false;
         timer = 0;
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
         collider = GetComponent<BoxCollider2D>();
         render = GetComponent<SpriteRenderer>();
     }
@@ -29,7 +29,7 @@ public class BreakableCloudScript : MonoBehaviour
             if (timer > 3 && !action)
             {
                 timer = 0;
-                StartCoroutine(regenerating());
+                regenerating();
             }
             else
             {
@@ -42,7 +42,7 @@ public class BreakableCloudScript : MonoBehaviour
     {
         if(!action)
         {
-            StartCoroutine(breaking());
+            breaking();
         }
     }
 
@@ -51,25 +51,21 @@ public class BreakableCloudScript : MonoBehaviour
         
     }
 
-    private IEnumerator breaking()
+    private void breaking()
     {
         action = true;
-        //anim.SetTrigger("destroy");
-        yield return new WaitForSeconds(1.2f);
-        collider.enabled = false;
-        render.enabled = false;
+        anim.SetTrigger("destroy");
         broken = true;
         action = false;
     }
 
-    private IEnumerator regenerating()
+
+    private void regenerating()
     {
         action = true;
-        //anim.SetTrigger("regenerating");
-        yield return new WaitForSeconds(0.35f);
-        collider.enabled = true;
-        render.enabled = true;
+        anim.SetTrigger("regenerating");
         broken = false;  
         action = false;
+        anim.SetTrigger("idle");
     }
 }

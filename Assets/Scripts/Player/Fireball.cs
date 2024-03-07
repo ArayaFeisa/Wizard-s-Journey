@@ -5,12 +5,14 @@ using UnityEngine;
 public class Fireball : MonoBehaviour
 {
     [SerializeField] private float speed;
+    public GameObject firebal;
     private float direction;
     private bool hit;
     private BoxCollider2D boxCollider;
     private Animator anim;
     private ParticleSystem em;
     private float lifetime;
+    
 
     private void Awake() {
         anim = GetComponent<Animator>();
