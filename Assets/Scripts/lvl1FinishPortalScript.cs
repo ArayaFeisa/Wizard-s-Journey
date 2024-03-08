@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,7 +8,6 @@ public class lvl1FinishPortalScript : MonoBehaviour
     public Transform playerPos;
     public bool lvl2;
     private bool inPortal;
-    public CinemachineVirtualCamera vcam;
     void Start()
     {
         inPortal = false;
@@ -21,8 +19,15 @@ public class lvl1FinishPortalScript : MonoBehaviour
     {
         if (inPortal && Input.GetKeyDown(KeyCode.Q))
         {
-            StartCoroutine(zoomIn());
+            reenter();
         }
+    }
+
+    private void reenter(){
+        lvl2 = true;
+        GameManager.instance.lvl2unlocked = lvl2;
+        SceneManager.LoadScene("Selector");
+        playerPos.transform.position = new Vector2(-19, -3);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -32,17 +37,5 @@ public class lvl1FinishPortalScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inPortal = false;
-    }
-    private IEnumerator zoomIn()
-    {
-        for (int i = 0; i < 66; i++)
-        {
-            vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
-            yield return new WaitForSeconds(0.015f);
-        }
-        lvl2 = true;
-        GameManager.instance.lvl2unlocked = lvl2;
-        SceneManager.LoadScene("Selector");
-        playerPos.transform.position = new Vector2(-19, -3);
     }
 }
