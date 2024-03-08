@@ -4,17 +4,18 @@ using Cinemachine;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class lvl1FinishPortalScript : MonoBehaviour
+public class lvl2FinishPortalScript : MonoBehaviour
 {
     public Transform playerPos;
-    public bool lvl2;
+    //public bool lvl3;
     private bool inPortal;
     public CinemachineVirtualCamera vcam;
     void Start()
     {
         inPortal = false;
     }
-    private void Awake() {
+    private void Awake()
+    {
     }
     // Update is called once per frame
     void Update()
@@ -40,8 +41,8 @@ public class lvl1FinishPortalScript : MonoBehaviour
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
             yield return new WaitForSeconds(0.015f);
         }
-        lvl2 = true;
-        GameManager.instance.lvl2unlocked = lvl2;
+        //lvl3 = true;
+        //GameManager.instance.lvl2unlocked = lvl3;
         SceneManager.LoadScene("Selector");
         playerPos.transform.position = new Vector2(-19, -3);
     }
