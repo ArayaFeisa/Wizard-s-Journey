@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    private float dashSpeed = 5f;
+    private float dashSpeed = 10f;
     private float dashCD = 1f;
     // public bool midAir;
     // public groundCheckTest check;
@@ -185,7 +185,7 @@ public class PlayerMovement : MonoBehaviour
         body.gravityScale = 0f;
         body.velocity = new Vector2(transform.localScale.x * dashSpeed, 0f);
         trail.emitting = true;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.1f);
         trail.emitting = false;
         body.gravityScale = 3f;
         isDashing = false;
