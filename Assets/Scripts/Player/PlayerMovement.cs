@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trail;
 
-    private bool canDash = true;
     private bool isDashing;
     private float dashSpeed = 10f;
     private float dashCD = 1f;
@@ -19,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     private float wallJumpCd;
-    private bool doubleJumpUnlocked;
     private bool doubleJumpCD;
     private float horizontalInput;
     public Vector2 vel;
@@ -38,6 +36,9 @@ public class PlayerMovement : MonoBehaviour
     private float coyoteTimer;
     private float jumpBufferTime = 0.1f;
     private float jumpBufferTimer;
+
+    private bool canDoubleJump;
+    private bool canDash;
     private void Awake() {
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
@@ -46,8 +47,9 @@ public class PlayerMovement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         summonPush.SetActive(false);
         inactive = true;
-        doubleJumpUnlocked = true;
-        
+        canDoubleJump = GameManager.instance.canDoubleJump;
+        canDash = GameManager.instance.canDash;
+        GameManager.instance.Test();
     }
     private void Start() {
         // Debug.Log(PlayerPrefs.GetInt("Lompat"));
@@ -95,7 +97,7 @@ public class PlayerMovement : MonoBehaviour
             body.velocity = new Vector2(body.velocity.x, body.velocity.y * 0.5f);
             coyoteTimer = 0f;
         }
-        if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && doubleJumpUnlocked && !isGrounded() && coyoteTimer <= 0f)
+        if (Input.GetKeyDown(KeyCode.W) && doubleJumpCD && canDoubleJump && !isGrounded() && coyoteTimer <= 0f)
         {
             Jump();
             doubleJumpCD = false;
@@ -207,6 +209,22 @@ public class PlayerMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Lever"))
         {
             door.interactAble = false;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("AirOrb"))
+        {
+            canDoubleJump = true;
+            GameManager.instance.canDoubleJump = canDoubleJump;
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.CompareTag("LightningOrb"))
+        {
+            canDash = true;
+            GameManager.instance.canDash = canDash;
+            collision.gameObject.SetActive(false);
         }
     }
 }
