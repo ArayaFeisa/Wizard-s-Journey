@@ -12,7 +12,8 @@ public class Lvl2PortalScript : MonoBehaviour
     private bool inPortal;
     void Start()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInParent<Animator>();
+        anim.enabled = false;
     }
     private void Awake() {
         lvl2Unlocked = GameManager.instance.lvl2unlocked;
@@ -24,7 +25,6 @@ public class Lvl2PortalScript : MonoBehaviour
             {
                 StartCoroutine(unlockStage2());    
             }
-        anim.enabled = true;
     }
 
     private IEnumerator unlockStage2(){
