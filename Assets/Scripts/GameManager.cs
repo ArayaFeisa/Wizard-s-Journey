@@ -6,8 +6,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     public bool canAttack;
-    public bool canDoubleJump;
-    public bool canDash;
     public bool lvl2unlocked;
     private void Awake() {
         if(instance != null) return;
