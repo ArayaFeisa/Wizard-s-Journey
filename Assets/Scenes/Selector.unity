@@ -238,7 +238,6 @@ GameObject:
   m_Component:
   - component: {fileID: 69456712}
   - component: {fileID: 69456713}
-  - component: {fileID: 69456714}
   m_Layer: 0
   m_Name: Virtual Camera
   m_TagString: Untagged
@@ -301,19 +300,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 57004723}
---- !u!114 &69456714
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69456711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ae007a91e63c2b4494e6be88919c88b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vcam: {fileID: 0}
 --- !u!1 &93870435
 GameObject:
   m_ObjectHideFlags: 0
@@ -10632,6 +10618,7 @@ GameObject:
   - component: {fileID: 360657974}
   - component: {fileID: 360657973}
   - component: {fileID: 360657972}
+  - component: {fileID: 360657975}
   - component: {fileID: 360657976}
   m_Layer: 0
   m_Name: Main Camera
@@ -10715,6 +10702,19 @@ Transform:
   - {fileID: 69456712}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &360657975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 360657971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ae007a91e63c2b4494e6be88919c88b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 2088168331}
 --- !u!114 &360657976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27582,7 +27582,7 @@ Transform:
   m_GameObject: {fileID: 1178155200}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.12, y: -16.285, z: 0.18041117}
+  m_LocalPosition: {x: -16.35, y: -16.285, z: 0.18041117}
   m_LocalScale: {x: 4.966728, y: 4.966728, z: 4.966728}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27662,7 +27662,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1178155200}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: b753df1a5575cf74d85af12a33a22c94, type: 2}
   m_CullingMode: 0
@@ -45800,8 +45800,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 0
-  canDoubleJump: 0
-  canDash: 0
   lvl2unlocked: 0
 --- !u!4 &1500289260
 Transform:
