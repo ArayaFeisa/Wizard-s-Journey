@@ -17,6 +17,7 @@ public class Lvl2PortalScript : MonoBehaviour
     //     anim.enabled = false;
     // }
     private void Awake() {
+        StartCoroutine(zoomOut());
         lvl2Unlocked = GameManager.instance.lvl2unlocked;
         anim = GetComponent<Animator>();
     }
@@ -49,5 +50,15 @@ public class Lvl2PortalScript : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         inPortal = false;
+    }
+
+    private IEnumerator zoomOut()
+    {
+        vcam.m_Lens.OrthographicSize = 0.1f;
+        for (int i = 0; i < 66; i++)
+        {
+            vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize + 0.1f;
+            yield return new WaitForSeconds(0.015f);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public bool canDoubleJump;
     public bool canDash;
     public bool lvl2unlocked;
+    public bool lvl3unlocked;
     public int lvl1ShardCount;
     public int lvl2ShardCount;
     private void Awake() {
