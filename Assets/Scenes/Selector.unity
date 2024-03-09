@@ -16086,7 +16086,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &616425128
 Transform:
   m_ObjectHideFlags: 0
@@ -16378,7 +16378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &645933573
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27664,7 +27664,7 @@ Animator:
   m_GameObject: {fileID: 1178155200}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b753df1a5575cf74d85af12a33a22c94, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4ae71b2fac67b4e4888757e3ea57ae01, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -45800,6 +45800,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 0
+  canDoubleJump: 0
+  canDash: 0
   lvl2unlocked: 0
 --- !u!4 &1500289260
 Transform:

@@ -12,7 +12,7 @@ public class Lvl2PortalScript : MonoBehaviour
     private bool inPortal;
     void Start()
     {
-        anim = GetComponentInParent<Animator>();
+        anim = GetComponent<Animator>();
         anim.enabled = false;
     }
     private void Awake() {
@@ -21,6 +21,9 @@ public class Lvl2PortalScript : MonoBehaviour
 
     void Update()
     {
+        if (lvl2Unlocked){
+            anim.SetTrigger("openlevel2");
+        }
             if (inPortal && Input.GetKeyDown(KeyCode.Q) && lvl2Unlocked)
             {
                 StartCoroutine(unlockStage2());    
