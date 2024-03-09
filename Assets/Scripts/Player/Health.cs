@@ -35,12 +35,7 @@ public class Health : MonoBehaviour
         } else {
             if (!dead){
                 // anim.SetBool("grounded", true);
-                anim.SetTrigger("die");
-
-                //nonaktif semua komponen dikelasnya
-                foreach (Behaviour component in components) {
-                    component.enabled = false;
-                }
+                Die();
                 dead = true;
             }
         }
@@ -73,6 +68,15 @@ public class Health : MonoBehaviour
         //aktifin semua komponen dikelasnya
         foreach (Behaviour component in components) {
             component.enabled = true;
+        }
+    }
+
+    public void Die(){
+        anim.SetTrigger("die");
+
+        //nonaktif semua komponen dikelasnya
+        foreach (Behaviour component in components) {
+            component.enabled = false;
         }
     }
 
