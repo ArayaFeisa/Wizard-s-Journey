@@ -7,11 +7,11 @@ public class EnemyFlying : MonoBehaviour
     [SerializeField] private float flySpeed;
     private GameObject player;
     public bool chase = false;
-    // private bool movingLeft;
     [SerializeField] private Transform enemy;
     [SerializeField] private Transform leftEdge;
     [SerializeField] private Transform rightEdge;
-    [SerializeField] private Transform startingPoint;
+    [SerializeField] private Transform[] patrolPoints;
+    private int patrolDestination;
     private void Start() {
         player = GameObject.FindGameObjectWithTag("Player");
     }
@@ -19,11 +19,28 @@ public class EnemyFlying : MonoBehaviour
         if (player == null)
             return;
 
-        if (chase == true){
+        if (!chase){
+            if (patrolDestination == 0){
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[0].position, flySpeed * Time.deltaTime);
+                transform.localScale =  new Vector3(-3,3,3);
+
+                if(Vector2.Distance(transform.position, patrolPoints[0].position) < .2f){
+                    transform.localScale =  Vector3.one * 3f;
+                    patrolDestination = 1;
+                }
+            }
+            if (patrolDestination == 1){
+                transform.position = Vector2.MoveTowards(transform.position, patrolPoints[1].position, flySpeed * Time.deltaTime);
+                transform.localScale =  Vector3.one * 3f;
+
+                if(Vector2.Distance(transform.position, patrolPoints[1].position) < .2f){
+                    transform.localScale =  new Vector3(-3,3,3);
+                    patrolDestination = 0;
+                }
+            }
+        } else {
             Chase();
             Flip();
-        } else {
-            ReturnToStart();
         }
     }
 
@@ -38,21 +55,4 @@ public class EnemyFlying : MonoBehaviour
             transform.localScale = Vector3.one * 3f;
         }
     }
-    private void ReturnToStart(){
-        if (transform.position.x > startingPoint.transform.position.x){
-            transform.localScale =  new Vector3(-3,3,3);
-        } else {
-            transform.localScale =  Vector3.one * 3f;
-        }
-        transform.position = Vector2.MoveTowards(transform.position, startingPoint.position, flySpeed * Time.deltaTime);
-    }
-
-    // private void MoveIntoDirection(int _direction){
-    //     transform.position = new Vector3(transform.position.x + Time.deltaTime * flySpeed * _direction, 
-    //         transform.position.y, transform.position.z);
-    // }
-
-    // private void DirectionChange(){
-    //     movingLeft = !movingLeft;
-    // }
 }
