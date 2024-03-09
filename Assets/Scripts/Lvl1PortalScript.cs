@@ -10,6 +10,7 @@ public class Lvl1PortalScript : MonoBehaviour
     // Start is called before the first frame update
     public Transform playerPos;
     public CinemachineVirtualCamera vcam;
+    public PlayerMovement shardReset;
     private bool inPortal;
     void Start()
     {
@@ -41,6 +42,7 @@ public class Lvl1PortalScript : MonoBehaviour
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
             yield return new WaitForSeconds(0.015f);
         }
+        shardReset.lvl1ShardCount = 0;
         SceneManager.LoadScene("Stage 1");
         playerPos.transform.position = new Vector2(-21, -3);
         for (int i = 0; i < 66; i++)

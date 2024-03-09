@@ -13,6 +13,8 @@ TagManager:
   - FireOrb
   - AirOrb
   - LightningOrb
+  - lvl1Shard
+  - lvl2Shard
   layers:
   - Default
   - TransparentFX

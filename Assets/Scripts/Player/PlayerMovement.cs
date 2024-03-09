@@ -39,6 +39,9 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash;
     private bool canDoubleJump;
+
+    public int lvl1ShardCount;
+    public int lvl2ShardCount;
     private void Awake() {
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
@@ -47,7 +50,8 @@ public class PlayerMovement : MonoBehaviour
         boxCollider = GetComponent<BoxCollider2D>();
         summonPush.SetActive(false);
         inactive = true;
-        
+        lvl1ShardCount = GameManager.instance.lvl1ShardCount;
+        lvl2ShardCount = GameManager.instance.lvl2ShardCount;
     }
     private void Start() {
         // Debug.Log(PlayerPrefs.GetInt("Lompat"));
@@ -222,6 +226,18 @@ public class PlayerMovement : MonoBehaviour
         {
             canDash = true;
             GameManager.instance.canDash = canDash;
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.CompareTag("lvl1Shard"))
+        {
+            lvl1ShardCount++;
+            GameManager.instance.lvl1ShardCount = lvl1ShardCount;
+            collision.gameObject.SetActive(false);
+        }
+        if (collision.CompareTag("lvl2Shard"))
+        {
+            lvl2ShardCount++;
+            GameManager.instance.lvl2ShardCount = lvl2ShardCount;
             collision.gameObject.SetActive(false);
         }
     }
