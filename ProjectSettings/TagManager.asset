@@ -11,6 +11,8 @@ TagManager:
   - Enemy
   - Checkpoint
   - FireOrb
+  - AirOrb
+  - LightningOrb
   layers:
   - Default
   - TransparentFX
