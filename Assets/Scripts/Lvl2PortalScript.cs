@@ -11,13 +11,14 @@ public class Lvl2PortalScript : MonoBehaviour
     public CinemachineVirtualCamera vcam;
     private bool inPortal;
     public PlayerMovement shardReset;
-    void Start()
-    {
-        anim = GetComponent<Animator>();
-        anim.enabled = false;
-    }
+    // void Start()
+    // {
+    //     anim = GetComponent<Animator>();
+    //     anim.enabled = false;
+    // }
     private void Awake() {
         lvl2Unlocked = GameManager.instance.lvl2unlocked;
+        anim = GetComponent<Animator>();
     }
 
     void Update()
