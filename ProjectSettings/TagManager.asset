@@ -15,6 +15,7 @@ TagManager:
   - LightningOrb
   - lvl1Shard
   - lvl2Shard
+  - FallingDripstone
   layers:
   - Default
   - TransparentFX

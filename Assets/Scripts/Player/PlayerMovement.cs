@@ -240,5 +240,10 @@ public class PlayerMovement : MonoBehaviour
             GameManager.instance.lvl2ShardCount = lvl2ShardCount;
             collision.gameObject.SetActive(false);
         }
+        if (collision.CompareTag("FallingDripstone"))
+        {
+            GetComponent<Health>().takeDamage(20);
+            collision.gameObject.SetActive(false);
+        }
     }
 }
