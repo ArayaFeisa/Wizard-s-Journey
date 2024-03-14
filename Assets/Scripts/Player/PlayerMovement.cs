@@ -58,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
+        canDash = true;
         if (isDashing)
         {
             return;
