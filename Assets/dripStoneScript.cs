@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class dripStoneScript : MonoBehaviour
 {
+    [SerializeField] private float fallspeed;
     public dripstoneTriggerScript trig;
     public ParticleSystem particle;
     public Rigidbody2D gravity;
@@ -38,6 +39,7 @@ public class dripStoneScript : MonoBehaviour
         }
         else
         {
+            trig.isIn = false;  
             timer = 0;
             sprite.enabled = true;
             idle = false;
@@ -73,7 +75,7 @@ public class dripStoneScript : MonoBehaviour
     {
         idle = false;
         falling = true;
-        gravity.gravityScale = 1;
+        gravity.gravityScale = fallspeed;
         yield return new WaitUntil(() => hit);
         gravity.gravityScale = 0;
         gravity.velocity = new Vector2(0,0);
