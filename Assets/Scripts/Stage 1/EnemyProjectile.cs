@@ -36,6 +36,9 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (collision.CompareTag("Player")){
+            
+        }
         hit = true;
         base.OnTriggerEnter2D(collision);
         coll.enabled = false;
