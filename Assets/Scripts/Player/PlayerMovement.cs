@@ -41,6 +41,7 @@ public class PlayerMovement : MonoBehaviour
     private bool canDoubleJump;
 
     public int lvl1ShardCount;
+    public UnityEngine.UI.Text shardCounter;
     public int lvl2ShardCount;
     private void Awake() {
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
@@ -58,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
+        shardCounter.text = lvl1ShardCount + "/18";
         canDash = true;
         if (isDashing)
         {
