@@ -235,7 +235,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lvl1ShardCount++;
             GameManager.instance.lvl1ShardCount = lvl1ShardCount;
-            collision.gameObject.SetActive(false);
+            collision.gameObject.tag = ("Untagged");
         }
         if (collision.CompareTag("lvl2Shard"))
         {
