@@ -39,7 +39,7 @@ public class Lvl2PortalScript : MonoBehaviour
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;
             yield return new WaitForSeconds(0.015f);
         }
-        shardReset.lvl1ShardCount = 0;
+        shardReset.lvl2ShardCount = 0;
         SceneManager.LoadScene("Stage 2");
     }
 

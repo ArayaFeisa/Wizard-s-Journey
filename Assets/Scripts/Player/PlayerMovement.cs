@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -43,9 +44,12 @@ public class PlayerMovement : MonoBehaviour
     public int lvl1ShardCount;
     public UnityEngine.UI.Text shardCounter;
     public int lvl2ShardCount;
+    public int lvl3ShardCount;
     private void Awake() {
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
+        canDoubleJump = GameManager.instance.canDoubleJump;
+        canDash = GameManager.instance.canDash;
         body = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
         boxCollider = GetComponent<BoxCollider2D>();
@@ -59,8 +63,8 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
-        shardCounter.text = lvl1ShardCount + "/18";
-        canDash = true;
+        if (SceneManager.GetActiveScene().name.Equals("Stage 1")) shardCounter.text = lvl1ShardCount + "/18";
+        if (SceneManager.GetActiveScene().name.Equals("Stage 2")) shardCounter.text = lvl2ShardCount + "/24";
         if (isDashing)
         {
             return;
@@ -241,7 +245,7 @@ public class PlayerMovement : MonoBehaviour
         {
             lvl2ShardCount++;
             GameManager.instance.lvl2ShardCount = lvl2ShardCount;
-            collision.gameObject.SetActive(false);
+            collision.gameObject.tag = ("Untagged");
         }
         if (collision.CompareTag("FallingDripstone"))
         {
