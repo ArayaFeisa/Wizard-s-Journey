@@ -18,7 +18,7 @@ public class lvl3PortalScript : MonoBehaviour
     // }
     private void Awake()
     {
-        StartCoroutine(zoomOut());
+        //StartCoroutine(zoomOut());
         lvl3Unlocked = GameManager.instance.lvl3unlocked;
         anim = GetComponent<Animator>();
     }

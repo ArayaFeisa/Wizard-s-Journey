@@ -40,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
 
     private bool canDash;
     private bool canDoubleJump;
+    private bool canSummonPushable;
 
     public int lvl1ShardCount;
     public UnityEngine.UI.Text shardCounter;
@@ -65,6 +66,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update() {
         if (SceneManager.GetActiveScene().name.Equals("Stage 1")) shardCounter.text = lvl1ShardCount + "/18";
         if (SceneManager.GetActiveScene().name.Equals("Stage 2")) shardCounter.text = lvl2ShardCount + "/24";
+        if (SceneManager.GetActiveScene().name.Equals("Stage 3")) shardCounter.text = lvl3ShardCount + "/30";
         if (isDashing)
         {
             return;
@@ -163,7 +165,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void summonPushable()
     {
-        if (inactive && Input.GetKeyDown(KeyCode.E))
+        if (inactive && Input.GetKeyDown(KeyCode.E) && canSummonPushable)
         {
             summonPush.SetActive(true);
             push.transform.position = transform.position + new Vector3((facing) ? offset : -offset, 0, 0);
@@ -235,6 +237,12 @@ public class PlayerMovement : MonoBehaviour
             GameManager.instance.canDash = canDash;
             collision.gameObject.SetActive(false);
         }
+        if (collision.CompareTag("EarthOrb"))
+        {
+            canSummonPushable = true;
+            GameManager.instance.canSummonPushable = canSummonPushable;
+            collision.gameObject.SetActive(false);
+        }
         if (collision.CompareTag("lvl1Shard"))
         {
             lvl1ShardCount++;
@@ -245,6 +253,12 @@ public class PlayerMovement : MonoBehaviour
         {
             lvl2ShardCount++;
             GameManager.instance.lvl2ShardCount = lvl2ShardCount;
+            collision.gameObject.tag = ("Untagged");
+        }
+        if (collision.CompareTag("lvl3Shard"))
+        {
+            lvl3ShardCount++;
+            GameManager.instance.lvl3ShardCount = lvl3ShardCount;
             collision.gameObject.tag = ("Untagged");
         }
         if (collision.CompareTag("FallingDripstone"))

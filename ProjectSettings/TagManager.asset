@@ -17,6 +17,7 @@ TagManager:
   - lvl2Shard
   - FallingDripstone
   - lvl3Shard
+  - EarthOrb
   layers:
   - Default
   - TransparentFX
