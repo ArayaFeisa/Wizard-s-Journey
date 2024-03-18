@@ -17,7 +17,7 @@ public class MenuTestScript : MonoBehaviour
         
     }
 
-    private void Play()
+    public void Play()
     {
         SceneManager.LoadScene("Selector");
     }
