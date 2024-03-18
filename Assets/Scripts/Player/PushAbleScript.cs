@@ -27,4 +27,12 @@ public class PushAbleScript : MonoBehaviour
             gameObject.layer = 8;
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            body1.velocity = body1.velocity * -1f;
+        }
+    }
 }

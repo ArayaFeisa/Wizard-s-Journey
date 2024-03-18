@@ -64,6 +64,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void Update() {
+
         if (SceneManager.GetActiveScene().name.Equals("Stage 1")) shardCounter.text = lvl1ShardCount + "/18";
         if (SceneManager.GetActiveScene().name.Equals("Stage 2")) shardCounter.text = lvl2ShardCount + "/24";
         if (SceneManager.GetActiveScene().name.Equals("Stage 3")) shardCounter.text = lvl3ShardCount + "/30";
@@ -168,13 +169,18 @@ public class PlayerMovement : MonoBehaviour
         if (inactive && Input.GetKeyDown(KeyCode.E) && canSummonPushable)
         {
             summonPush.SetActive(true);
-            push.transform.position = transform.position + new Vector3((facing) ? offset : -offset, 0, 0);
+            push.transform.position = transform.position + new Vector3(0, 1.5f, 0);
             inactive = false;
             pushAbleTimer = 0;
         }
         else if (Input.GetKey(KeyCode.E))
         {
+            push.body1.gravityScale = 0;
             push.body1.velocity = vel;
+        }
+        else 
+        {
+            push.body1.gravityScale = 1;
         }
 
         if (!inactive)

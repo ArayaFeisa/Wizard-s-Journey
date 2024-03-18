@@ -108075,12 +108075,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
-  canDoubleJump: 0
-  canDash: 0
-  canSummonPushable: 0
+  canAttack: 1
+  canDoubleJump: 1
+  canDash: 1
+  canSummonPushable: 1
   lvl2unlocked: 0
-  lvl3unlocked: 0
+  lvl3unlocked: 1
   lvl1ShardCount: 0
   lvl2ShardCount: 0
   lvl3ShardCount: 0
@@ -139097,9 +139097,10 @@ GameObject:
   - component: {fileID: 1803891721}
   - component: {fileID: 1803891720}
   - component: {fileID: 1803891719}
+  - component: {fileID: 1803891724}
   m_Layer: 0
   m_Name: Orb Tanah
-  m_TagString: Untagged
+  m_TagString: EarthOrb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144047,6 +144048,29 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1803891724
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1803891718}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.16
+  m_Height: 0.32
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1813176607
 GameObject:
   m_ObjectHideFlags: 0
@@ -165156,6 +165180,10 @@ PrefabInstance:
     - target: {fileID: 3078325352881104380, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 3337497425744777925, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
+      propertyPath: fireballCd
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: 3337497425744777925, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
       propertyPath: fireballs.Array.data[0]
