@@ -16,6 +16,7 @@ TagManager:
   - lvl1Shard
   - lvl2Shard
   - FallingDripstone
+  - lvl3Shard
   layers:
   - Default
   - TransparentFX
