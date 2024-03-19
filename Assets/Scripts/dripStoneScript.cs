@@ -10,6 +10,7 @@ public class dripStoneScript : MonoBehaviour
     public Rigidbody2D gravity;
     public SpriteRenderer sprite;
     public Transform pos;
+    public CapsuleCollider2D capsule;
     private bool falling;
     private bool hit;
     private bool idle;
@@ -20,6 +21,7 @@ public class dripStoneScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //capsule.enabled = true;
         ori = gameObject.transform.position;
         gravity.gravityScale = 0;
 
@@ -53,7 +55,7 @@ public class dripStoneScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player" && falling)
         {
             collision.gameObject.GetComponent<Health>().takeDamage(20);
         }
@@ -73,6 +75,7 @@ public class dripStoneScript : MonoBehaviour
 
     private IEnumerator fall()
     {
+        //capsule.enabled = true;
         idle = false;
         falling = true;
         gravity.gravityScale = fallspeed;
@@ -88,5 +91,6 @@ public class dripStoneScript : MonoBehaviour
         falling = false;
         idle = true;
         hit = false;
+        //capsule.enabled = false;
     }
 }

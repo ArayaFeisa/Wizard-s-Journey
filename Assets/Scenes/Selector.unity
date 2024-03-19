@@ -46706,12 +46706,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 0
-  canDoubleJump: 0
-  canDash: 0
+  canAttack: 1
+  canDoubleJump: 1
+  canDash: 1
   canSummonPushable: 0
   lvl2unlocked: 0
-  lvl3unlocked: 0
+  lvl3unlocked: 1
   lvl1ShardCount: 0
   lvl2ShardCount: 0
   lvl3ShardCount: 0
