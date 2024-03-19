@@ -17,7 +17,6 @@ public class WizardAttack : MonoBehaviour
         anim = GetComponent<Animator>();
         wizardMov = GetComponent<PlayerMovement>();
         canAttack = GameManager.instance.canAttack;
-        GameManager.instance.Test();
     }
     // private void Start() {
     //     numAttack = 0;

@@ -11858,7 +11858,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 732, y: 339}
+  m_AnchoredPosition: {x: 841, y: 483}
   m_SizeDelta: {x: 68.1993, y: 17.199}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &459241149
@@ -52509,12 +52509,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 1
-  canDoubleJump: 1
-  canDash: 1
+  canAttack: 0
+  canDoubleJump: 0
+  canDash: 0
   canSummonPushable: 0
   lvl2unlocked: 0
-  lvl3unlocked: 1
+  lvl3unlocked: 0
   lvl1ShardCount: 0
   lvl2ShardCount: 0
   lvl3ShardCount: 0
