@@ -36,17 +36,16 @@ public class EnemyProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")){
-            
+        if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
+        {
+            hit = true;
+            base.OnTriggerEnter2D(collision);
+            coll.enabled = false;
+            if (anim != null)
+                anim.SetTrigger("explode");
+            else
+                gameObject.SetActive(false);
         }
-        hit = true;
-        base.OnTriggerEnter2D(collision);
-        coll.enabled = false;
-
-        if (anim != null)
-            anim.SetTrigger("explode");
-        else
-            gameObject.SetActive(false);
     }
     private void Deactivate()
     {

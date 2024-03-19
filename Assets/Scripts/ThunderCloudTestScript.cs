@@ -32,7 +32,7 @@ public class ThunderCloudTestScript : MonoBehaviour
     private IEnumerator strike()
     {
         striking = true;
-        yield return new WaitForSeconds(0.25f);
+        yield return new WaitForSeconds(0.1f);
         thunHitBox.enabled = true;
         thunSprite.enabled = true;
         yield return new WaitForSeconds(0.5f);
