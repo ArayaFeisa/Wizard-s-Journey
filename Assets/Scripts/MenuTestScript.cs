@@ -19,6 +19,17 @@ public class MenuTestScript : MonoBehaviour
 
     public void Play()
     {
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Selector");
+    }
+
+    public void Load()
+    {
+        SceneManager.LoadScene("Selector");
+    }
+
+    public void Exit()
+    {
+        Application.Quit();
     }
 }

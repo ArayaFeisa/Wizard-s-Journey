@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -50,6 +51,7 @@ public class WizardAttack : MonoBehaviour
         if (collision.CompareTag("FireOrb")) {
             canAttack = true;
             GameManager.instance.canAttack = canAttack;
+            PlayerPrefs.SetInt("canAttack", 1);
             // numAttack = 1;
             // PlayerPrefs.SetInt("numAttack", 1);
             // Debug.Log(PlayerPrefs.GetInt("numAttack"));

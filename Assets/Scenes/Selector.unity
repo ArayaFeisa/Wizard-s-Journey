@@ -11539,7 +11539,7 @@ Transform:
   m_GameObject: {fileID: 360657971}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.39, y: 62.81, z: -10}
+  m_LocalPosition: {x: -20.39, y: 1.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -49081,7 +49081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPos: {fileID: 2088168331}
   vcam: {fileID: 69456713}
-  shardReset: {fileID: 0}
+  shardReset: {fileID: 2088168332}
 --- !u!212 &1345091106
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -52654,10 +52654,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canAttack: 1
-  canDoubleJump: 1
-  canDash: 1
-  canSummonPushable: 1
+  canAttack: 0
+  canDoubleJump: 0
+  canDash: 0
+  canSummonPushable: 0
   lvl2unlocked: 0
   lvl3unlocked: 0
   lvl1ShardCount: 0
@@ -69774,7 +69774,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8788139470622280893, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 62.81
+      value: 1.3
       objectReference: {fileID: 0}
     - target: {fileID: 8788139470622280893, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
       propertyPath: m_LocalPosition.z

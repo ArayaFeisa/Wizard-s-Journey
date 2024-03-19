@@ -16321,6 +16321,59 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1239044255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1239044257}
+  - component: {fileID: 1239044256}
+  m_Layer: 0
+  m_Name: Game Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1239044256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239044255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canAttack: 0
+  canDoubleJump: 0
+  canDash: 0
+  canSummonPushable: 0
+  lvl2unlocked: 0
+  lvl3unlocked: 0
+  lvl1ShardCount: 0
+  lvl2ShardCount: 0
+  lvl3ShardCount: 0
+--- !u!4 &1239044257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1239044255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -17.105833, y: -0.6150272, z: -0.01398113}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1297226456
 GameObject:
   m_ObjectHideFlags: 0
@@ -21536,7 +21589,7 @@ GameObject:
   - component: {fileID: 1650538236}
   - component: {fileID: 1650538235}
   m_Layer: 0
-  m_Name: GameObject (1)
+  m_Name: scroll bg
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26965,3 +27018,4 @@ SceneRoots:
   - {fileID: 636397700}
   - {fileID: 1650538237}
   - {fileID: 1016034433}
+  - {fileID: 1239044257}

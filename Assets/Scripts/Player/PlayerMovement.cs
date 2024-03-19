@@ -238,36 +238,42 @@ public class PlayerMovement : MonoBehaviour
             canDoubleJump = true;
             GameManager.instance.canDoubleJump = canDoubleJump;
             collision.gameObject.SetActive(false);
+            PlayerPrefs.SetInt("canDoubleJump", 1);
         }
         if (collision.CompareTag("LightningOrb"))
         {
             canDash = true;
             GameManager.instance.canDash = canDash;
             collision.gameObject.SetActive(false);
+            PlayerPrefs.SetInt("canDash", 1);
         }
         if (collision.CompareTag("EarthOrb"))
         {
             canSummonPushable = true;
             GameManager.instance.canSummonPushable = canSummonPushable;
             collision.gameObject.SetActive(false);
+            PlayerPrefs.SetInt("canSummonPushable", 1);
         }
         if (collision.CompareTag("lvl1Shard"))
         {
             lvl1ShardCount++;
             GameManager.instance.lvl1ShardCount = lvl1ShardCount;
             collision.gameObject.tag = ("Untagged");
+            PlayerPrefs.SetInt("lvl1ShardCount", lvl1ShardCount);
         }
         if (collision.CompareTag("lvl2Shard"))
         {
             lvl2ShardCount++;
             GameManager.instance.lvl2ShardCount = lvl2ShardCount;
             collision.gameObject.tag = ("Untagged");
+            PlayerPrefs.SetInt("lvl2ShardCount", lvl2ShardCount);
         }
         if (collision.CompareTag("lvl3Shard"))
         {
             lvl3ShardCount++;
             GameManager.instance.lvl3ShardCount = lvl3ShardCount;
             collision.gameObject.tag = ("Untagged");
+            PlayerPrefs.SetInt("lvl3ShardCount", lvl3ShardCount);
         }
         if (collision.CompareTag("FallingDripstone"))
         {
