@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerMovement : MonoBehaviour
 {
     private float jumpPow=14;
+    [SerializeField] private int pushAbleDuration;
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trail;
@@ -47,6 +48,7 @@ public class PlayerMovement : MonoBehaviour
     public int lvl2ShardCount;
     public int lvl3ShardCount;
     private void Awake() {
+        canSummonPushable = true;
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
         canDoubleJump = GameManager.instance.canDoubleJump;
@@ -185,7 +187,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (!inactive)
         {
-            if (pushAbleTimer < 10)
+            if (pushAbleTimer < pushAbleDuration)
             {
                 pushAbleTimer += Time.deltaTime;
             }
