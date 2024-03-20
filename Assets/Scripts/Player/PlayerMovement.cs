@@ -33,7 +33,6 @@ public class PlayerMovement : MonoBehaviour
     private float pushAbleTimer;
     public PushAbleScript push;
     public GameObject summonPush;
-    public GameObject moveTutor;
     public doorScript door;
 
     public Transform levers;
@@ -46,14 +45,12 @@ public class PlayerMovement : MonoBehaviour
     private bool canDash;
     private bool canDoubleJump;
     private bool canSummonPushable;
-    private bool canMove;
 
     public int lvl1ShardCount;
     public UnityEngine.UI.Text shardCounter;
     public int lvl2ShardCount;
     public int lvl3ShardCount;
     private void Awake() {
-        canMove = true;
         canSummonPushable = true;
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
@@ -77,11 +74,6 @@ public class PlayerMovement : MonoBehaviour
             PlayerPrefs.SetInt("lvl1ShardCount", lvl1ShardCount);
             PlayerPrefs.SetInt("lvl2ShardCount", lvl2ShardCount);
             PlayerPrefs.SetInt("lvl3ShardCount", lvl3ShardCount);
-
-            if (GameManager.instance.newSave)
-            {
-                StartCoroutine(movementTutorial());
-            }
         }
         if (SceneManager.GetActiveScene().name.Equals("Stage 1")) shardCounter.text = lvl1ShardCount + "/18";
         if (SceneManager.GetActiveScene().name.Equals("Stage 2")) shardCounter.text = lvl2ShardCount + "/24";
@@ -94,7 +86,7 @@ public class PlayerMovement : MonoBehaviour
         horizontalInput = Input.GetAxis("Horizontal");
         horizontalMovement();
         summonPushable();
-        if(canMove) Movement();
+        Movement();
         anim.SetBool("walk", horizontalInput != 0);
         anim.SetBool("grounded", isGrounded());
     }
@@ -298,21 +290,5 @@ public class PlayerMovement : MonoBehaviour
             GetComponent<Health>().takeDamage(20);
             collision.gameObject.SetActive(false);
         }
-    }
-
-    private IEnumerator movementTutorial()
-    {
-        canMove = false;
-        GameManager.instance.newSave = false;
-        body.velocity = Vector3.zero;
-        moveTutor.SetActive(true);
-        yield return new WaitUntil(wait);
-        moveTutor.SetActive(false);
-        canMove = true;
-    }
-
-    private bool wait()
-    {
-        return Input.GetKeyDown(KeyCode.Backspace);
     }
 }

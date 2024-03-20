@@ -16505,8 +16505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491e1f768cacb64187665dd1c9f70e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveTutor: {fileID: 0}
-  newSave: 0
   canAttack: 0
   canDoubleJump: 0
   canDash: 0
