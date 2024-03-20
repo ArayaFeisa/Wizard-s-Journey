@@ -50,7 +50,7 @@ public class BossProjectile : EnemyDamage
         }
     }
 
-    private void DeactivateBossProjectile()
+    private void Nonactivated()
     {
         gameObject.SetActive(false);
     }
