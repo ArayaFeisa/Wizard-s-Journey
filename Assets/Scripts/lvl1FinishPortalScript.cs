@@ -9,6 +9,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
     public Transform playerPos;
     public bool lvl2;
     private bool inPortal;
+    [SerializeField] private AudioClip completeSound;
     public CinemachineVirtualCamera vcam;
     void Start()
     {
@@ -22,6 +23,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
     {
         if (inPortal && Input.GetKeyDown(KeyCode.Q))
         {
+            SoundManager.instance.PlaySound(completeSound);
             reenter();
         }
     }

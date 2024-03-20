@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class lvl2FinishPortalScript : MonoBehaviour
 {
+    [SerializeField] private AudioClip completeSound;
     public Transform playerPos;
     public bool lvl3;
     private bool inPortal;
@@ -24,6 +25,7 @@ public class lvl2FinishPortalScript : MonoBehaviour
     {
         if (inPortal && Input.GetKeyDown(KeyCode.Q))
         {
+            SoundManager.instance.PlaySound(completeSound);
             reenter();
         }
     }

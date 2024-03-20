@@ -20,6 +20,10 @@ public class Health : MonoBehaviour
     [Header ("Components")]
     [SerializeField] private Behaviour[] components;
 
+    [Header ("Dead Sound")]
+    [SerializeField] private AudioClip deadSound;
+    [SerializeField] private AudioClip hurtSound;
+
     public bool respawnDripStone;
     private void Awake() {
         currentHealth = startingHealth;
@@ -33,11 +37,13 @@ public class Health : MonoBehaviour
         healthBar.setHealth(currentHealth);
         if (currentHealth > 0){
             StartCoroutine(immune());
+            SoundManager.instance.PlaySound(hurtSound);
         } else {
             if (!dead){
                 // anim.SetBool("grounded", true);
                 Die();
                 dead = true;
+                SoundManager.instance.PlaySound(deadSound);
             }
         }
     }

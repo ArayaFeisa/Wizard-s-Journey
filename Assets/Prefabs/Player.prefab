@@ -177,11 +177,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2abd4f1749154ec41941e2b1757e76fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pushAbleDuration: 0
   speed: 10
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   trail: {fileID: 7933113755384461713}
+  jumpSound: {fileID: 8300000, guid: aad9361d760ad614a9eca4d847965358, type: 3}
+  skillSound: {fileID: 8300000, guid: c3206a09b87a83c438d66c7bf4d79064, type: 3}
+  dashSound: {fileID: 8300000, guid: 1efbd889f0faa9e489ca733b6c0e19e6, type: 3}
   vel: {x: 0, y: 0}
   facing: 0
   offset: 2
@@ -189,6 +193,10 @@ MonoBehaviour:
   summonPush: {fileID: 0}
   door: {fileID: 0}
   levers: {fileID: 0}
+  lvl1ShardCount: 0
+  shardCounter: {fileID: 0}
+  lvl2ShardCount: 0
+  lvl3ShardCount: 0
 --- !u!114 &3337497425744777925
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +222,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  fireballSound: {fileID: 8300000, guid: f1669d453b60e7640b19d7e702f1104d, type: 3}
+  fireorbSound: {fileID: 8300000, guid: c3206a09b87a83c438d66c7bf4d79064, type: 3}
 --- !u!95 &8444393430918879489
 Animator:
   serializedVersion: 5
@@ -367,6 +377,9 @@ MonoBehaviour:
   components:
   - {fileID: 3337497425744777925}
   - {fileID: 9091622849897590645}
+  deadSound: {fileID: 8300000, guid: d56b07bde442eb440b486030b72a6113, type: 3}
+  hurtSound: {fileID: 8300000, guid: 26a60fc6607be8d4fbe3292cf7961f4e, type: 3}
+  respawnDripStone: 0
 --- !u!114 &3989175935493081617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -379,6 +392,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6a866ce8f1915445a154d6fc5d1653f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  healthorbSound: {fileID: 8300000, guid: 32863335dfcc8db43aa800d5c6ee94b7, type: 3}
+  attemptCounter: {fileID: 0}
 --- !u!1 &3516434030986362279
 GameObject:
   m_ObjectHideFlags: 0

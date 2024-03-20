@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class PlayerRespawn : MonoBehaviour
 {
     // [SerializeField] private AudioClip checkpointSound;
+    [SerializeField] private AudioClip healthorbSound;
     private Transform currentCheckpoint;
     private Health playerHealth;
     private int attempts;
@@ -77,6 +78,7 @@ public class PlayerRespawn : MonoBehaviour
         }
 
         if (collision.CompareTag("HealthOrb")){
+            SoundManager.instance.PlaySound(healthorbSound);
             attempts++;
             collision.gameObject.SetActive(false);
         }

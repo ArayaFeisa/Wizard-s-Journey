@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private LayerMask groundLayer;
     [SerializeField] private TrailRenderer trail;
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip skillSound;
+    [SerializeField] private AudioClip dashSound;
 
     private bool isDashing;
     private float dashSpeed = 10f;
@@ -109,6 +112,7 @@ public class PlayerMovement : MonoBehaviour
             Jump();
             jumpBufferTimer = 0f;
             doubleJumpCD = true;
+            SoundManager.instance.PlaySound(jumpSound);
             anim.SetTrigger("jump");
         }
         if(Input.GetKeyUp(KeyCode.W) && body.velocity.y > 0f)
@@ -138,6 +142,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift) && canDash)
         {
+            SoundManager.instance.PlaySound(dashSound);
             StartCoroutine(Dash());
         }
     }
@@ -240,6 +245,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (collision.CompareTag("AirOrb"))
         {
+            SoundManager.instance.PlaySound(skillSound);
             canDoubleJump = true;
             GameManager.instance.canDoubleJump = canDoubleJump;
             collision.gameObject.SetActive(false);
@@ -247,6 +253,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.CompareTag("LightningOrb"))
         {
+            SoundManager.instance.PlaySound(skillSound);
             canDash = true;
             GameManager.instance.canDash = canDash;
             collision.gameObject.SetActive(false);
@@ -254,6 +261,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (collision.CompareTag("EarthOrb"))
         {
+            SoundManager.instance.PlaySound(skillSound);
             canSummonPushable = true;
             GameManager.instance.canSummonPushable = canSummonPushable;
             collision.gameObject.SetActive(false);

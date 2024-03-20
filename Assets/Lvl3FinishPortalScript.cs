@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class Lvl3FinishPortalScript : MonoBehaviour
 {
+    [SerializeField] private AudioClip completeSound;
     public Transform playerPos;
     private bool inPortal;
     public CinemachineVirtualCamera vcam;
@@ -23,6 +24,7 @@ public class Lvl3FinishPortalScript : MonoBehaviour
     {
         if (inPortal && Input.GetKeyDown(KeyCode.Q))
         {
+            SoundManager.instance.PlaySound(completeSound);
             reenter();
         }
     }

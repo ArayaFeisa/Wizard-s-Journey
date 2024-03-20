@@ -8,6 +8,8 @@ public class WizardAttack : MonoBehaviour
     [SerializeField] private float fireballCd;
     [SerializeField] private Transform firePoint;
     [SerializeField] private GameObject[] fireballs;
+    [SerializeField] private AudioClip fireballSound;
+    [SerializeField] private AudioClip fireorbSound;
     private Animator anim;
     private PlayerMovement wizardMov;
     private float cdTimer = Mathf.Infinity;
@@ -31,6 +33,7 @@ public class WizardAttack : MonoBehaviour
         cdTimer += Time.deltaTime;
     }
     private void Attack(){
+        SoundManager.instance.PlaySound(fireballSound);
         anim.SetTrigger("attack");
         cdTimer = 0;
 
@@ -49,6 +52,7 @@ public class WizardAttack : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if (collision.CompareTag("FireOrb")) {
+            SoundManager.instance.PlaySound(fireorbSound);
             canAttack = true;
             GameManager.instance.canAttack = canAttack;
             PlayerPrefs.SetInt("canAttack", 1);
