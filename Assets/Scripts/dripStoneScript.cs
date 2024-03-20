@@ -11,6 +11,7 @@ public class dripStoneScript : MonoBehaviour
     public SpriteRenderer sprite;
     public Transform pos;
     public CapsuleCollider2D capsule;
+    public Health respawnDrip;
     private bool falling;
     private bool hit;
     private bool idle;
@@ -35,16 +36,9 @@ public class dripStoneScript : MonoBehaviour
             StartCoroutine(fall());
         }
 
-        if(timer < 3 && !falling && idle)
+        if(respawnDrip.respawnDripStone && idle)
         {
-            timer += Time.deltaTime;
-        }
-        else
-        {
-            trig.isIn = false;  
-            timer = 0;
-            sprite.enabled = true;
-            idle = false;
+            StartCoroutine(respawn());
         }
         if (hit)
         {
@@ -92,5 +86,15 @@ public class dripStoneScript : MonoBehaviour
         idle = true;
         hit = false;
         //capsule.enabled = false;
+    }
+
+    private IEnumerator respawn()
+    {
+        trig.isIn = false;
+        timer = 0;
+        sprite.enabled = true;
+        idle = false;
+        yield return new WaitForSeconds(1);
+        respawnDrip.respawnDripStone = false;
     }
 }

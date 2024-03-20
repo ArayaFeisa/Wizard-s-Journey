@@ -20,6 +20,7 @@ public class Health : MonoBehaviour
     [Header ("Components")]
     [SerializeField] private Behaviour[] components;
 
+    public bool respawnDripStone;
     private void Awake() {
         currentHealth = startingHealth;
         anim = GetComponent<Animator>();
@@ -58,6 +59,7 @@ public class Health : MonoBehaviour
     }
 
     public void Respawn(){
+        respawnDripStone = true;
         dead = false;
         AddHealth(startingHealth);
         healthBar.setMaxHealth(startingHealth);
