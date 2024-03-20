@@ -18453,7 +18453,11 @@ CanvasRenderer:
   m_GameObject: {fileID: 843021067}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!1 &844558741
+=======
+--- !u!1 &847660242
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
 =======
 --- !u!1 &847660242
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
@@ -18465,17 +18469,23 @@ GameObject:
   serializedVersion: 6
   m_Component:
 <<<<<<< HEAD
+<<<<<<< HEAD
   - component: {fileID: 844558742}
   - component: {fileID: 844558744}
   - component: {fileID: 844558743}
   m_Layer: 5
   m_Name: Text (Legacy) (5)
 =======
+=======
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   - component: {fileID: 847660243}
   - component: {fileID: 847660245}
   - component: {fileID: 847660244}
   m_Layer: 5
   m_Name: Fill
+<<<<<<< HEAD
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
+=======
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18483,7 +18493,11 @@ GameObject:
   m_StaticEditorFlags: 0
   m_IsActive: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
 --- !u!224 &844558742
+=======
+--- !u!224 &847660243
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
 =======
 --- !u!224 &847660243
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
@@ -18492,6 +18506,7 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 844558741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -18508,6 +18523,8 @@ RectTransform:
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &844558743
 =======
+=======
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   m_GameObject: {fileID: 847660242}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -18522,12 +18539,16 @@ RectTransform:
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &847660244
+<<<<<<< HEAD
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
+=======
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_GameObject: {fileID: 844558741}
   m_Enabled: 1
@@ -18538,6 +18559,8 @@ MonoBehaviour:
   m_Material: {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
 =======
+=======
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   m_GameObject: {fileID: 847660242}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -18546,6 +18569,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
+<<<<<<< HEAD
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
+=======
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
@@ -18553,6 +18579,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
+<<<<<<< HEAD
 <<<<<<< HEAD
   m_FontData:
     m_Font: {fileID: 12800000, guid: 314f475f22cbb154bb0426e0ec7cf802, type: 3}
@@ -18570,6 +18597,8 @@ MonoBehaviour:
   m_Text: "Press        To Move\n   And    To Jump"
 --- !u!222 &844558744
 =======
+=======
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
   m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
@@ -18581,6 +18610,9 @@ MonoBehaviour:
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
 --- !u!222 &847660245
+<<<<<<< HEAD
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
+=======
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -18588,7 +18620,11 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
   m_GameObject: {fileID: 844558741}
+=======
+  m_GameObject: {fileID: 847660242}
+>>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
 =======
   m_GameObject: {fileID: 847660242}
 >>>>>>> 625d40f2b91ecbb5085742c0697f92ef46428e7f
