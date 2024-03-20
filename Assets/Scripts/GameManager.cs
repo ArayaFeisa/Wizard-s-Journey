@@ -2,10 +2,12 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public bool newSave;
     public bool canAttack;
     public bool canDoubleJump;
     public bool canDash;
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-    
+
     }
 
     public void loadData()
@@ -49,4 +51,6 @@ public class GameManager : MonoBehaviour
         lvl3ShardCount = (PlayerPrefs.GetInt("lvl3ShardCount"));
         attempts = (PlayerPrefs.GetInt("attempts"));
     }
+
+   
 }
