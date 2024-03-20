@@ -51,6 +51,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
 
     private IEnumerator zoomIn()
     {
+
         for (int i = 0; i < 66; i++)
         {
             vcam.m_Lens.OrthographicSize = vcam.m_Lens.OrthographicSize - 0.1f;

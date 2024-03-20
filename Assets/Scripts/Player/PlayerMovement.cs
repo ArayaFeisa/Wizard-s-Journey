@@ -48,6 +48,12 @@ public class PlayerMovement : MonoBehaviour
     public int lvl2ShardCount;
     public int lvl3ShardCount;
     private void Awake() {
+        if (SceneManager.GetActiveScene().name.Equals("Selector"))
+        {
+            PlayerPrefs.SetInt("lvl1ShardCount", lvl1ShardCount);
+            PlayerPrefs.SetInt("lvl2ShardCount", lvl2ShardCount);
+            PlayerPrefs.SetInt("lvl2ShardCount", lvl3ShardCount);
+        } 
         canSummonPushable = true;
         //Physics2D.IgnoreCollision(GetComponent<Collider2D>(), levers.GetComponent<Collider2D>());
         isDashing = false;
@@ -259,21 +265,18 @@ public class PlayerMovement : MonoBehaviour
             lvl1ShardCount++;
             GameManager.instance.lvl1ShardCount = lvl1ShardCount;
             collision.gameObject.tag = ("Untagged");
-            PlayerPrefs.SetInt("lvl1ShardCount", lvl1ShardCount);
         }
         if (collision.CompareTag("lvl2Shard"))
         {
             lvl2ShardCount++;
             GameManager.instance.lvl2ShardCount = lvl2ShardCount;
             collision.gameObject.tag = ("Untagged");
-            PlayerPrefs.SetInt("lvl2ShardCount", lvl2ShardCount);
         }
         if (collision.CompareTag("lvl3Shard"))
         {
             lvl3ShardCount++;
             GameManager.instance.lvl3ShardCount = lvl3ShardCount;
             collision.gameObject.tag = ("Untagged");
-            PlayerPrefs.SetInt("lvl3ShardCount", lvl3ShardCount);
         }
         if (collision.CompareTag("FallingDripstone"))
         {
