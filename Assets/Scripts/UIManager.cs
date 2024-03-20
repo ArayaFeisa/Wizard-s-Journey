@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class UIManager : MonoBehaviour
 {
     [SerializeField] private GameObject gameOverScreen;
+    private PlayerRespawn pRespawn;
 
     private void Awake() {
         gameOverScreen.SetActive(false);
@@ -15,6 +16,8 @@ public class UIManager : MonoBehaviour
 
     public void Restart(){
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        // pRespawn.Restart();
+        GameManager.instance.attempts = 2;
     }
 
     public void MainMenu(){

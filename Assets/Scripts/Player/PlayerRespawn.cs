@@ -1,24 +1,36 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerRespawn : MonoBehaviour
 {
     // [SerializeField] private AudioClip checkpointSound;
     private Transform currentCheckpoint;
     private Health playerHealth;
-    private int attempts = 2;
+    private int attempts;
     private bool checkpointed;
     private UIManager uiManager;
     private float fallHold = -50f;
+    public UnityEngine.UI.Text attemptCounter;
 
     private void Update() {
         if (transform.position.y < fallHold){
             CheckRespawn();
         }
+        if (SceneManager.GetActiveScene().name.Equals("Stage 1")){
+            attemptCounter.text = (attempts+1).ToString();
+        }
+        if (SceneManager.GetActiveScene().name.Equals("Stage 2")){
+            attemptCounter.text = (attempts+1).ToString();
+        }
+        if (SceneManager.GetActiveScene().name.Equals("Stage 3")){
+            attemptCounter.text = (attempts+1).ToString();
+        }
     }
 
     private void Awake() {
+        attempts = GameManager.instance.attempts;
         playerHealth = GetComponent<Health>();
         checkpointed = false;
         uiManager = FindObjectOfType<UIManager>();
@@ -37,7 +49,8 @@ public class PlayerRespawn : MonoBehaviour
         } else {
             if (attempts > 0){
             attempts--;
-
+            GameManager.instance.attempts = attempts;
+            PlayerPrefs.SetInt("attempts", attempts);
             transform.position = currentCheckpoint.position; // move to cp
             playerHealth.Respawn();
 
@@ -64,15 +77,7 @@ public class PlayerRespawn : MonoBehaviour
         }
     }
 
-    // private void ResetGame()
-    // {
-    //     Collider2D checkpoints = GameObject.FindGameObjectWithTag("Checkpoint").GetComponent<Collider2D>();
-    //     checkpoints.enabled = true;
-
-    //     attempts = 2;
-    //     checkpointed = false;
-    //     transform.position = new Vector3(-21, -3, 0);
-    //     playerHealth.Respawn();
-    //     Debug.Log("Game Reset");
-    // }
+    public void Restart(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
 }
