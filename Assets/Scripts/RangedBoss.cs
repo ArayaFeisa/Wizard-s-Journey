@@ -35,30 +35,15 @@ public class RangedBoss : MonoBehaviour
             }
         }
     }
-    // private void RangedAttack(){
-    //     cdTimer = 0;
-    //     for (int i = 0; i < firepoint.Length; i++){
-    //         slime[findSlime()].transform.position = firepoint[i].position;
-    //         slime[findSlime()].GetComponent<BossProjectile>().ActivateProjectile();
-    //         Vector2 direction = firepoint[i].position - transform.position;
-    //         direction.Normalize();
-
-    //         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-    //         slime[findSlime()].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-    //     }
-    // }
 
     private void RangedAttack() {
     cdTimer = 0;
     for (int i = 0; i < firepoint.Length; i++) {
-        // Calculate direction based on the position of the fire point relative to the enemy
         Vector2 direction = (firepoint[i].position - transform.position).normalized;
 
-        // Rotate projectile's direction based on the calculated direction
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         slime[findSlime()].transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 
-        // Set the position of the projectile to the fire point
         slime[findSlime()].transform.position = firepoint[i].position;
         slime[findSlime()].GetComponent<BossProjectile>().ActivateProjectile();
     }
