@@ -58,6 +58,7 @@ public class lvl1FinishPortalScript : MonoBehaviour
         }
         lvl2 = true;
         GameManager.instance.lvl2unlocked = lvl2;
+        PlayerPrefs.SetInt("lvl2unlocked", 1);
         SceneManager.LoadScene("Selector");
         playerPos.transform.position = new Vector2(-19, -3);
     }

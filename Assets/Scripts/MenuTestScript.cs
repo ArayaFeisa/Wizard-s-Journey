@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class MenuTestScript : MonoBehaviour
 {
+    public GameManager GameManager;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class MenuTestScript : MonoBehaviour
 
     public void Load()
     {
+        GameManager.loadData();
         SceneManager.LoadScene("Selector");
     }
 
