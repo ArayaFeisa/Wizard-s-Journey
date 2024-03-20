@@ -14,11 +14,11 @@ public class UIManager : MonoBehaviour
     }
 
     public void Restart(){
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (SceneManager.GetActiveScene().name.Equals("Stage 1")) GameManager.instance.lvl1ShardCount = 0;
+        else if (SceneManager.GetActiveScene().name.Equals("Stage 2")) GameManager.instance.lvl2ShardCount = 0;
+        else if (SceneManager.GetActiveScene().name.Equals("Stage 3")) GameManager.instance.lvl3ShardCount = 0;
+        SceneManager.LoadScene("Selector");
         GameManager.instance.attempts = 2;
-        GameManager.instance.lvl1ShardCount = 0;
-        GameManager.instance.lvl2ShardCount = 0;
-        GameManager.instance.lvl3ShardCount = 0;
     }
 
     public void MainMenu(){

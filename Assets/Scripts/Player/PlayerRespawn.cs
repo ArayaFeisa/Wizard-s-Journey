@@ -30,7 +30,7 @@ public class PlayerRespawn : MonoBehaviour
     }
 
     private void Awake() {
-        attempts = GameManager.instance.attempts;
+        attempts = 2;
         playerHealth = GetComponent<Health>();
         checkpointed = false;
         uiManager = FindObjectOfType<UIManager>();
@@ -49,8 +49,8 @@ public class PlayerRespawn : MonoBehaviour
         } else {
             if (attempts > 0){
             attempts--;
-            GameManager.instance.attempts = attempts;
-            PlayerPrefs.SetInt("attempts", attempts);
+            //GameManager.instance.attempts = attempts;
+            //PlayerPrefs.SetInt("attempts", attempts);
             transform.position = currentCheckpoint.position; // move to cp
             playerHealth.Respawn();
 
