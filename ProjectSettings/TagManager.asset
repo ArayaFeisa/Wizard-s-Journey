@@ -19,6 +19,7 @@ TagManager:
   - lvl3Shard
   - EarthOrb
   - HealthOrb
+  - Move Tutor
   layers:
   - Default
   - TransparentFX

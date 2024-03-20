@@ -21,6 +21,7 @@ public class MenuTestScript : MonoBehaviour
     public void Play()
     {
         PlayerPrefs.DeleteAll();
+        GameManager.newSave = true;
         SceneManager.LoadScene("Selector");
     }
 
