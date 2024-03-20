@@ -75,6 +75,11 @@ public class PlayerRespawn : MonoBehaviour
             collision.GetComponent<Collider2D>().enabled = false;
             checkpointed = true;
         }
+
+        if (collision.CompareTag("HealthOrb")){
+            attempts++;
+            collision.gameObject.SetActive(false);
+        }
     }
 
     public void Restart(){
