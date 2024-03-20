@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public int lvl1ShardCount;
     public int lvl2ShardCount;
     public int lvl3ShardCount;
+    public int attempts = 2;
     private void Awake() {
         if(instance != null) return;
         instance = this;
@@ -46,5 +47,6 @@ public class GameManager : MonoBehaviour
         lvl1ShardCount = (PlayerPrefs.GetInt("lvl1ShardCount"));
         lvl2ShardCount = (PlayerPrefs.GetInt("lvl2ShardCount"));
         lvl3ShardCount = (PlayerPrefs.GetInt("lvl3ShardCount"));
+        attempts = (PlayerPrefs.GetInt("attempts"));
     }
 }
