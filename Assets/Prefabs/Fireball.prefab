@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3432716027346601360}
   - component: {fileID: 1420165903261145369}
   - component: {fileID: 7980304282001670260}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: Fireball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  gameObject: {fileID: 7251501910925059646}
+  firebal: {fileID: 0}
 --- !u!61 &3432716027346601360
 BoxCollider2D:
   m_ObjectHideFlags: 0
