@@ -37,6 +37,7 @@ public class Health : MonoBehaviour
         healthBar.setHealth(currentHealth);
         if (currentHealth > 0){
             StartCoroutine(immune());
+            anim.SetTrigger("hurt");
             SoundManager.instance.PlaySound(hurtSound);
         } else {
             if (!dead){
