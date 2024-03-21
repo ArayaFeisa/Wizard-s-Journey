@@ -38,7 +38,7 @@ public class BossProjectile : EnemyDamage
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") || collision.CompareTag("Ground"))
+        if (collision.CompareTag("Player"))
         {
             hit = true;
             base.OnTriggerEnter2D(collision);
