@@ -306,9 +306,28 @@ public class PlayerMovement : MonoBehaviour
         GameManager.instance.newSave = false;
         body.velocity = Vector3.zero;
         moveTutor.SetActive(true);
+        moveTutor.transform.localScale = new Vector3(11,11,1);
+        moveTutor.transform.localRotation = Quaternion.Euler(new Vector3(0, 90, 0)); ;
+        for(int i = 0; i < 100; i++)
+        {
+            moveTutor.transform.localScale = new Vector3(moveTutor.transform.localScale.x - 0.1f, moveTutor.transform.localScale.y - 0.1f, 1);
+            moveTutor.transform.localRotation = Quaternion.Euler(new Vector3(0, moveTutor.transform.eulerAngles.y - 0.9f, 0));
+            yield return new WaitForSeconds(0.01f);
+        }
         yield return new WaitUntil(wait);
-        moveTutor.SetActive(false);
+        for (int i = 0; i < 100; i++)
+        {
+            moveTutor.transform.localPosition = new Vector2(moveTutor.transform.localPosition.x -19.2f,moveTutor.transform.localPosition.y);
+            yield return new WaitForSeconds(0.01f);
+        }
+        yield return new WaitUntil(wait);
         canMove = true;
+        for (int i = 0; i < 50; i++)
+        {
+            moveTutor.transform.localScale = new Vector3(moveTutor.transform.localScale.x - 0.02f, moveTutor.transform.localScale.y - 0.02f, 1);
+            yield return new WaitForSeconds(0.01f);
+        }
+        moveTutor.SetActive(false);
     }
 
     private bool wait()
