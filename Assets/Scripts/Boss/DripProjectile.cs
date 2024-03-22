@@ -9,6 +9,7 @@ public class DripProjectile : BossDamaged
     private float lifetime;
     private Animator anim;
     private BoxCollider2D coll;
+    private bool canStun;
 
     private bool hit;
     private void Awake()
@@ -25,13 +26,16 @@ public class DripProjectile : BossDamaged
     }
     private void Update()
     {
+        canStun = GameManager.instance.canStun;
         if (hit) return;
-        float movementSpeed = speed * Time.deltaTime;
-        transform.Translate(0, movementSpeed, 0);
+        if (canStun){
+            float movementSpeed = speed * Time.deltaTime;
+            transform.Translate(0, movementSpeed, 0);
 
-        lifetime += Time.deltaTime;
-        if (lifetime > resetTime)
-            gameObject.SetActive(false);
+            lifetime += Time.deltaTime;
+            if (lifetime > resetTime)
+                gameObject.SetActive(false);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -45,6 +49,8 @@ public class DripProjectile : BossDamaged
                 anim.SetTrigger("explode");
             else
                 gameObject.SetActive(false);
+                canStun = false;
+                GameManager.instance.canStun = canStun;
         }
     }
 }

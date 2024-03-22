@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int lvl3ShardCount;
     public int attempts = 2;
     public bool canStun;
+    public bool isFinish = false;
     private void Awake() {
         if(instance != null) return;
         instance = this;

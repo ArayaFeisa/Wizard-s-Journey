@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Fireball : MonoBehaviour
+public class Fireball : BossHealth
 {
     [SerializeField] private float speed;
     public GameObject firebal;
@@ -43,6 +43,9 @@ public class Fireball : MonoBehaviour
 
         if(collision.tag == "Enemy"){
             collision.GetComponent<Health>().takeDamage(20);
+        }
+        if(collision.tag == "Enemy"){
+            collision.GetComponent<BossHealth>().takeDamage(20);
         }
     }
     public void setDirection(float _direction){

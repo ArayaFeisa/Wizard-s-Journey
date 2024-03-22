@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Health : MonoBehaviour
+public class BossHealth : MonoBehaviour
 {
     [Header ("Health")]
     public HealthBar healthBar;
@@ -11,7 +10,6 @@ public class Health : MonoBehaviour
     public float currentHealth;
     private bool dead;
     private Animator anim;
-    private bool isFinish;
 
     [Header ("iframes")]
     [SerializeField] private float immuneDuration;
@@ -32,9 +30,6 @@ public class Health : MonoBehaviour
         spriteRend = GetComponent<SpriteRenderer>();
         healthBar.setMaxHealth(startingHealth);
     }
-    private void Update() {
-        isFinish = GameManager.instance.isFinish;
-    }
 
     public void takeDamage(float _damage){
         currentHealth = Mathf.Clamp(currentHealth - _damage, 0, startingHealth);
@@ -47,8 +42,6 @@ public class Health : MonoBehaviour
             if (!dead){
                 // anim.SetBool("grounded", true);
                 anim.SetTrigger("die");
-                isFinish = true;
-                GameManager.instance.isFinish = isFinish;
                 Die();
                 dead = true;
                 SoundManager.instance.PlaySound(deadSound);

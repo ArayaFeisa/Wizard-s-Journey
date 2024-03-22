@@ -28,6 +28,9 @@ public class PlayerRespawn : MonoBehaviour
         if (SceneManager.GetActiveScene().name.Equals("Stage 3")){
             attemptCounter.text = (attempts+1).ToString();
         }
+        if (SceneManager.GetActiveScene().name.Equals("Boss Arena")){
+            attemptCounter.text = (attempts+1).ToString();
+        }
     }
 
     private void Awake() {
