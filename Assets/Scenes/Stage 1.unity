@@ -201903,6 +201903,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 364652916}
     - target: {fileID: 9091622849897590645, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
+      propertyPath: trail
+      value: 
+      objectReference: {fileID: 2145316363348400460}
+    - target: {fileID: 9091622849897590645, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
       propertyPath: shardAnim
       value: 
       objectReference: {fileID: 0}
@@ -201925,6 +201929,11 @@ PrefabInstance:
       addedObject: {fileID: 655408927}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
+--- !u!96 &2145316363348400460 stripped
+TrailRenderer:
+  m_CorrespondingSourceObject: {fileID: 7933113755384461713, guid: 760f0673792763848876a3afd1fc90a0, type: 3}
+  m_PrefabInstance: {fileID: 2145316363348400459}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2490219399249316326
 PrefabInstance:
   m_ObjectHideFlags: 0
